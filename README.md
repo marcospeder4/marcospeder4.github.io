@@ -4,3 +4,4 @@ un proyecto propio de una tienda online de pkg´s con descarga directa para ps4 
 
 
 -se añadio soporte para pc
+
