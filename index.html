@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Privada de PS4</title>
+    <style>
+        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 20px; }
+        .catalogo { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px; }
+        .juego-card { background: #242424; padding: 20px; border-radius: 8px; width: 80%; max-width: 400px; }
+        h2 { margin: 0 0 10px 0; font-size: 20px; }
+        button { background-color: #0070cc; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+        button:hover { background-color: #005bb5; }
+    </style>
+</head>
+<body>
+
+    <h1>🎮 Juegos Disponibles</h1>
+    <p>Asegúrate de tener GoldHEN activado antes de descargar maldito lautaro.</p>
+
+    <div class="catalogo">
+        
+        <!-- TARJETA DEL JUEGO -->
+        <div class="juego-card">
+            <h2>Balatro</h2>
+            <!-- TÚ EDITAS ESTE ENLACE DE ABAJO -->
+            <button onclick="instalar('https://download2260.mediafire.com/iv81fhfa1rngBMWt_GuycDjdBVwaYmYPAxNLV2VEpG-NzzlR28n9QPpXe6t_J6hqk1Jcp8uWWlG7kATF42EAlZP_2pntouwukkPGnAQhOFx8olvFboaRV5QnBwGUigrI8A4vJ_ZnDc35S0Z6i2FVZwpm-UYqRvRETPPIZt_w-yYA/17sioi4if9cy3bj/UP3639-CUSA47498_00-0248164936448018-A0100-V0100-%5BDLPSGAME.COM%5D.pkg')">Descargar a PS4</button>
+        </div>
+
+    </div>
+
+    <script>
+        function instalar(urlPkg) {
+            // El navegador de la PS4 le envía la orden al servidor interno de la propia PS4 (127.0.0.1)
+            fetch('http://127.0.0.1:12800/api/install', {
+                method: 'POST',
+                body: JSON.stringify({ type: 'direct', packages: [urlPkg] })
+            })
+            .then(() => alert('¡Descarga iniciada! Revisa las notificaciones de la consola.'))
+            .catch(() => alert('Error de conexión. ¿Está el GoldHEN activado?'));
+        }
+    </script>
+
+</body>
+</html>
