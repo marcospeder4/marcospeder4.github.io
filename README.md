@@ -7,6 +7,8 @@ por el momento NO FUNCIONA para ps4
 
 
 -se añadio soporte para pc
+
+
 -se añadio fifa 18
 
 
