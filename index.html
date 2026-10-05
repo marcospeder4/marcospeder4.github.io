@@ -23,7 +23,7 @@
         <!-- TARJETA DEL JUEGO -->
         <div class="juego-card">
             <h2>Balatro</h2>
-            <!-- TÚ EDITAS ESTE ENLACE DE ABAJO -->
+            <!-- EDITAS ESTE ENLACE DE ABAJO PARA LA DESCARGA -->
             <button onclick="instalar('https://download1072.mediafire.com/bhxznyalsvngBA-V7Kd61vR52PgqcaKHzPfvz5vPYfJNLP7K58Xa6PCatv7z3dBXsk5f1eUXx_-YiVSPYp0i4C7cx8wf0b8MUupBKK9nBg4esRkbuzA2foyM2nM_GXqZt3G5N8rlXz2tARsfhKw7fo0SbYtuwZvyTUjtx64CHWir/17sioi4if9cy3bj/UP3639-CUSA47498_00-0248164936448018-A0100-V0100-%5BDLPSGAME.COM%5D.pkg')">Descargar a PS4</button>
         </div>
 
@@ -31,7 +31,7 @@
 
     <script>
         function instalar(urlPkg) {
-            // El navegador de la PS4 le envía la orden al servidor interno de la propia PS4 (127.0.0.1)
+            // El navegador de la PS4 le envia la orden al servidor interno de la propia PS4 (127.0.0.1)
             fetch('http://127.0.0.1:12800/api/install', {
                 method: 'POST',
                 body: JSON.stringify({ type: 'direct', packages: [urlPkg] })
