@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store Privada para ps4</title>
+    <title>Selector de plataforma</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 20px; }
-        .catalogo { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px; }
-        .juego-card { background: #242424; padding: 20px; border-radius: 8px; width: 80%; max-width: 400px; }
-        h2 { margin: 0 0 10px 0; font-size: 20px; }
-        button { background-color: #0070cc; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
-        button:hover { background-color: #005bb5; }
+        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 50px 20px; }
+        h1 { margin-bottom: 40px; font-size: 28px; }
+        .botones-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .btn { padding: 15px 30px; font-size: 18px; font-weight: bold; color: white; text-decoration: none; border-radius: 8px; transition: 0.2s; border: none; cursor: pointer; }
+        .btn-ps4 { background-color: #0070cc; }
+        .btn-ps4:hover { background-color: #005bb5; }
+        .btn-pc { background-color: #28a745; }
+        .btn-pc:hover { background-color: #218838; }
+        .nota { margin-top: 30px; font-size: 14px; color: #aaaaaa; }
     </style>
 </head>
 <body>
 
-    <h1>🎮 juegos disponibles</h1>
-    <p>asegurate de tener Goldhen activado antes de descargar</p>
+    <h1>selecciona desde donde te estas conectando</h1>
 
-    <div class="catalogo">
-        
-        <!-- TARJETA DEL JUEGO -->
-        <div class="juego-card">
-            <h2>Balatro</h2>
-            <!-- EDITAS ESTE ENLACE DE ABAJO PARA LA DESCARGA -->
-            <button onclick="instalar('https://download1072.mediafire.com/bhxznyalsvngBA-V7Kd61vR52PgqcaKHzPfvz5vPYfJNLP7K58Xa6PCatv7z3dBXsk5f1eUXx_-YiVSPYp0i4C7cx8wf0b8MUupBKK9nBg4esRkbuzA2foyM2nM_GXqZt3G5N8rlXz2tARsfhKw7fo0SbYtuwZvyTUjtx64CHWir/17sioi4if9cy3bj/UP3639-CUSA47498_00-0248164936448018-A0100-V0100-%5BDLPSGAME.COM%5D.pkg')">Descargar a PS4</button>
-        </div>
-
+    <div class="botones-container">
+        <a href="store_pc.html" class="btn btn-pc">Entrar desde PC</a>
+        <a href="store_ps4.html" class="btn btn-ps4">Entrar desde PS4</a>
     </div>
 
+    <p class="nota" id="auto-detect-msg"></p>
+
     <script>
-        function instalar(urlPkg) {
-            // El navegador de la PS4 le envia la orden al servidor interno de la propia PS4 (127.0.0.1)
-            fetch('http://127.0.0.1:12800/api/install', {
-                method: 'POST',
-                body: JSON.stringify({ type: 'direct', packages: [urlPkg] })
-            })
-            .then(() => alert('¡Descarga iniciada! Revisa las notificaciones de la consola.'))
-            .catch(() => alert('Error de conexión. ¿Está el GoldHEN activado?'));
+        // Pequeño script para detectar automáticamente la PS4
+        const userAgent = navigator.userAgent;
+        if (userAgent.includes("PlayStation 4")) {
+            document.getElementById("auto-detect-msg").innerText = "Detectamos que estás en una PS4. Redirigiendo...";
+            setTimeout(() => {
+                window.location.href = "store_ps4.html";
+            }, 1500);
+        } else {
+            // Opcional: Podrías hacer lo mismo para PC, pero es mejor dejar los botones por si alguien quiere copiar el link de la otra plataforma
+            document.getElementById("auto-detect-msg").innerText = "Por favor, elige la versión correspondiente a tu dispositivo.";
         }
     </script>
 
