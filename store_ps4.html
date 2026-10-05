@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Privada para PS4</title>
+    <style>
+        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 20px; }
+        .catalogo { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px; }
+        .juego-card { background: #242424; padding: 20px; border-radius: 8px; width: 80%; max-width: 400px; }
+        h2 { margin: 0 0 10px 0; font-size: 20px; }
+        button { background-color: #0070cc; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+        button:hover { background-color: #005bb5; }
+    </style>
+</head>
+<body>
+
+    <h1>🎮 Juegos Disponibles (PS4)</h1>
+    <p>Asegúrate de tener GoldHEN y Remote Package Installer corriendo para recibir el payload.</p>
+
+    <div class="catalogo">
+        <div class="juego-card">
+            <h2>Balatro</h2>
+            <button onclick="instalar('https://download1072.mediafire.com/bhxznyalsvngBA-V7Kd61vR52PgqcaKHzPfvz5vPYfJNLP7K58Xa6PCatv7z3dBXsk5f1eUXx_-YiVSPYp0i4C7cx8wf0b8MUupBKK9nBg4esRkbuzA2foyM2nM_GXqZt3G5N8rlXz2tARsfhKw7fo0SbYtuwZvyTUjtx64CHWir/17sioi4if9cy3bj/UP3639-CUSA47498_00-0248164936448018-A0100-V0100-%5BDLPSGAME.COM%5D.pkg')">Instalar en PS4</button>
+        </div>
+    </div>
+
+    <script>
+        function instalar(urlPkg) {
+            // Se realiza la petición al RPI de la consola
+            fetch('http://127.0.0.1:12800/api/install', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }, // FIXED: Header obligatorio para que pase el payload
+                body: JSON.stringify({ type: 'direct', packages: [urlPkg] })
+            })
+            .then(res => {
+                if(res.ok) alert('¡Descarga iniciada! Revisa las notificaciones de la consola.');
+                else alert('Error en la respuesta del servidor. Verifica que el puerto 12800 esté escuchando.');
+            })
+            .catch(() => alert('Error de conexión. ¿Está el Remote Package Installer activado?'));
+        }
+    </script>
+
+</body>
+</html>

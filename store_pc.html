@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Privada para PC</title>
+    <style>
+        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 20px; }
+        .catalogo { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px; }
+        .juego-card { background: #242424; padding: 20px; border-radius: 8px; width: 80%; max-width: 400px; }
+        h2 { margin: 0 0 10px 0; font-size: 20px; }
+        button { background-color: #28a745; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+
+    <h1>💻 Juegos Disponibles (PC)</h1>
+    <p>Descarga los archivos .pkg directamente a tu computadora.</p>
+
+    <div class="catalogo">
+        <div class="juego-card">
+            <h2>Balatro</h2>
+            <button onclick="descargar('https://download1072.mediafire.com/bhxznyalsvngBA-V7Kd61vR52PgqcaKHzPfvz5vPYfJNLP7K58Xa6PCatv7z3dBXsk5f1eUXx_-YiVSPYp0i4C7cx8wf0b8MUupBKK9nBg4esRkbuzA2foyM2nM_GXqZt3G5N8rlXz2tARsfhKw7fo0SbYtuwZvyTUjtx64CHWir/17sioi4if9cy3bj/UP3639-CUSA47498_00-0248164936448018-A0100-V0100-%5BDLPSGAME.COM%5D.pkg')">Descargar a PC</button>
+        </div>
+    </div>
+
+    <script>
+        function descargar(urlPkg) {
+            // En PC usamos el comportamiento nativo del navegador para descargar el archivo
+            window.location.href = urlPkg;
+        }
+    </script>
+
+</body>
+</html>
