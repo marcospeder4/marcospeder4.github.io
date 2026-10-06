@@ -4,7 +4,7 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Estado](https://img.shields.io/badge/Estado-funcional-green?style=for-the-badge)
 
-> Tienda web liviana y optimizada para la descarga de juegos y archivos `.pkg` para consolas PS4 con GoldHEN y PC.
+> Tienda web liviana y optimizada para la descarga de juegos y archivos `.pkg` para PC y consolas PS4 con GoldHEN
 
 ---
 
@@ -17,7 +17,7 @@
 
 - 🎯 **Catálogo organizado:** Diseño en cuadrícula (*CSS Grid*) con portadas e información clara de cada título.
 - 📦 **Soporte multipartes:** Soporte para descargas divididas (Partes 1, 2, 3...), Updates y DLCs independientes.
-- ⚡ **Rápido y liviano:** Construido con código nativo (Vanilla JS, HTML5 y CSS3), sin marcos pesados.
+- ⚡ **Rápido y liviano:** Construido con código nativo (HTML5 y CSS3), sin marcos pesados.
 ---
 
 ## 📂 Estructura del Repositorio
