@@ -26,5 +26,4 @@
 .
 ├── index.html        # Tienda principal
 ├── store_pc.html     # Versión optimizada para PC
-├── store_ps4              # No funcional aunque pienso mejorarla a futuro
 └── README.md         # Documentación del proyecto
