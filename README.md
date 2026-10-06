@@ -37,5 +37,5 @@
 .
 ├── index.html        # Tienda principal
 ├── store_pc.html     # Versión optimizada para PC
-├── img/              # Portadas e imágenes de los juegos
+├── store_ps4              # No funcional aunque pienso mejorarla a futuro
 └── README.md         # Documentación del proyecto
