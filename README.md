@@ -2,7 +2,7 @@
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Estado](https://img.shields.io/badge/Estado-En_Desarrollo/funcional-orange?style=for-the-badge)
+![Estado](https://img.shields.io/badge/Estado-funcional-green?style=for-the-badge)
 
 > Tienda web liviana y optimizada para la descarga de juegos y archivos `.pkg` para consolas PS4 con GoldHEN y PC.
 
@@ -11,17 +11,6 @@
 ## 🌐 Enlaces de Acceso
 
 - 🚀 **Servidor Principal (GitHub Pages):** [marcospeder4.github.io](https://marcospeder4.github.io)
-- 🔄 **Servidor Espejo (Netlify):** [tienda-ps4.netlify.app](https://tienda-ps4.netlify.app/)(Suele estar mas desactualizado)
-
----
-
-## ⚠️ Estado del Proyecto
-
-> [!WARNING]
-> **Aviso de compatibilidad:** Actualmente la descarga directa integrada **NO está funcionando desde el navegador nativo de PS4**. 
-> 
-> *Se recomienda descargar los archivos desde una PC y posteriormente transferirlos a la consola mediante USB o servidor FTP.*
-
 ---
 
 ## ✨ Características
