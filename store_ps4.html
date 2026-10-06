@@ -5,39 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store Privada para PS4</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 20px; }
-        .catalogo { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px; }
-        .juego-card { background: #242424; padding: 20px; border-radius: 8px; width: 80%; max-width: 400px; }
+        body { 
+            background-color: #121212; 
+            color: #ffffff; 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            margin: 0;
+        }
+
+        .config-box {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 420px;
+            margin: 0 auto 25px auto;
+        }
+
+        .config-box input {
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background: #2b2b2b;
+            color: white;
+            width: 60%;
+        }
+
+        .config-box button {
+            padding: 8px 12px;
+            font-size: 14px;
+            width: auto;
+            margin-left: 5px;
+            background-color: #28a745;
+        }
+
+        .status-msg {
+            font-size: 13px;
+            margin-top: 8px;
+            color: #aaa;
+        }
+
+        .catalogo { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 15px; 
+        }
+
+        .juego-card { 
+            background: #242424; 
+            padding: 20px; 
+            border-radius: 8px; 
+            width: 100%; 
+            max-width: 400px; 
+            box-sizing: border-box;
+            border: 1px solid #333;
+        }
+
         h2 { margin: 0 0 10px 0; font-size: 20px; }
-        button { background-color: #0070cc; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+
+        button { 
+            background-color: #0070cc; 
+            color: white; 
+            border: none; 
+            padding: 12px 20px; 
+            font-size: 15px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-weight: bold; 
+            transition: background 0.2s;
+        }
+
         button:hover { background-color: #005bb5; }
     </style>
 </head>
 <body>
 
-    <h1>🎮 Juegos Disponibles (PS4)</h1>
-    <p>Asegúrate de tener GoldHEN y Remote Package Installer corriendo para recibir el payload.</p>
+    <h1>🎮 Store Privada Remote PS4</h1>
+    <p style="color: #bbb; font-size: 14px;">Inicia <b>Remote Package Installer</b> o GoldHEN en tu PS4 antes de enviar las instalaciones.</p>
+
+    <!-- Configuración de IP de la PS4 -->
+    <div class="config-box">
+        <label for="ps4-ip"><b>IP Local de tu PS4:</b></label><br><br>
+        <input type="text" id="ps4-ip" placeholder="Ej: 192.168.1.15">
+        <button onclick="guardarIP()">Guardar IP</button>
+        <div id="status" class="status-msg">Estado: IP no guardada</div>
+    </div>
 
     <div class="catalogo">
         <div class="juego-card">
             <h2>Balatro</h2>
-            <button onclick="instalar('https://download1072.mediafire.com/bhxznyalsvngBA-V7Kd61vR52PgqcaKHzPfvz5vPYfJNLP7K58Xa6PCatv7z3dBXsk5f1eUXx_-YiVSPYp0i4C7cx8wf0b8MUupBKK9nBg4esRkbuzA2foyM2nM_GXqZt3G5N8rlXz2tARsfhKw7fo0SbYtuwZvyTUjtx64CHWir/17sioi4if9cy3bj/UP3639-CUSA47498_00-0248164936448018-A0100-V0100-%5BDLPSGAME.COM%5D.pkg')">Instalar en PS4</button>
+            <button onclick="instalar('Balatro', 'https://download1072.mediafire.com/bhxznyalsvngBA-V7Kd61vR52PgqcaKHzPfvz5vPYfJNLP7K58Xa6PCatv7z3dBXsk5f1eUXx_-YiVSPYp0i4C7cx8wf0b8MUupBKK9nBg4esRkbuzA2foyM2nM_GXqZt3G5N8rlXz2tARsfhKw7fo0SbYtuwZvyTUjtx64CHWir/17sioi4if9cy3bj/UP3639-CUSA47498_00-0248164936448018-A0100-V0100-%5BDLPSGAME.COM%5D.pkg')">Instalar en PS4</button>
         </div>
     </div>
 
     <script>
-        function instalar(urlPkg) {
-            // Se realiza la petición al RPI de la consola
-            fetch('http://127.0.0.1:12800/api/install', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' }, // FIXED: Header obligatorio para que pase el payload
-                body: JSON.stringify({ type: 'direct', packages: [urlPkg] })
-            })
-            .then(res => {
-                if(res.ok) alert('¡Descarga iniciada! Revisa las notificaciones de la consola.');
-                else alert('Error en la respuesta del servidor. Verifica que el puerto 12800 esté escuchando.');
-            })
-            .catch(() => alert('Error de conexión. ¿Está el Remote Package Installer activado?'));
+        // Cargar IP guardada si existe al iniciar
+        document.addEventListener("DOMContentLoaded", () => {
+            const ipGuardada = localStorage.getItem('ps4_ip');
+            if (ipGuardada) {
+                document.getElementById('ps4-ip').value = ipGuardada;
+                document.getElementById('status').innerText = 'IP actual: ' + ipGuardada;
+                document.getElementById('status').style.color = '#28a745';
+            }
+        });
+
+        function guardarIP() {
+            const ip = document.getElementById('ps4-ip').value.trim();
+            if (!ip) {
+                alert('Ingresa una dirección IP válida.');
+                return;
+            }
+            localStorage.setItem('ps4_ip', ip);
+            document.getElementById('status').innerText = 'IP guardada: ' + ip;
+            document.getElementById('status').style.color = '#28a745';
+            alert('IP guardada correctamente.');
+        }
+
+        async function instalar(nombreJuego, urlPkg) {
+            const ps4Ip = localStorage.getItem('ps4_ip');
+            
+            if (!ps4Ip) {
+                alert('Primero debes ingresar y guardar la IP local de tu PS4.');
+                return;
+            }
+
+            const endpoint = `http://${ps4Ip}:12800/api/install`;
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json' 
+                    },
+                    body: JSON.stringify({ 
+                        type: 'direct', 
+                        packages: [urlPkg] 
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.status === 'success' || data.stat === 'success') {
+                        alert(`¡Instalación de ${nombreJuego} enviada a la PS4 con éxito! Revisa la consola.`);
+                    } else {
+                        alert(`Respuesta de la PS4: ${JSON.stringify(data)}`);
+                    }
+                } else {
+                    alert('El puerto 12800 respondió con error. Revisa la aplicación en la PS4.');
+                }
+            } catch (error) {
+                alert(
+                    '❌ Error de conexión con la PS4.\n\n' +
+                    'Comprueba los siguientes puntos:\n' +
+                    '1. Que la IP de la PS4 sea la correcta.\n' +
+                    '2. Que el Remote Package Installer esté ABIERTO en la consola.\n' +
+                    '3. Si estás usando la web desde Netlify/GitHub (HTTPS), asegúrate de PERMITIR el "Contenido no seguro" (Insecure Content) en los permisos del sitio en tu navegador.'
+                );
+            }
         }
     </script>
 
