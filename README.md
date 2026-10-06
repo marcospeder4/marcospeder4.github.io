@@ -30,8 +30,6 @@
 - 🎯 **Catálogo organizado:** Diseño en cuadrícula (*CSS Grid*) con portadas e información clara de cada título.
 - 📦 **Soporte multipartes:** Soporte para descargas divididas (Partes 1, 2, 3...), Updates y DLCs independientes.
 - ⚡ **Rápido y liviano:** Construido con código nativo (Vanilla JS, HTML5 y CSS3), sin marcos pesados.
-- 🛡️ **Preparado para monetización:** Estructura lista para integrar acortadores de enlaces y banners no invasivos.
-
 ---
 
 ## 📂 Estructura del Repositorio
