@@ -10,8 +10,8 @@
 
 ## 🌐 Enlaces de Acceso
 
-- 🚀 **Servidor Principal (GitHub Pages):** [marcospeder4.github.io](https://marcospeder4.github.io)[cite: 10]
-- 🔄 **Servidor Espejo (Netlify):** [tienda-ps4.netlify.app](https://tienda-ps4.netlify.app/)[cite: 10]
+- 🚀 **Servidor Principal (GitHub Pages):** [marcospeder4.github.io](https://marcospeder4.github.io)
+- 🔄 **Servidor Espejo (Netlify):** [tienda-ps4.netlify.app](https://tienda-ps4.netlify.app/)(Suele estar mas desactualizado)
 
 ---
 
