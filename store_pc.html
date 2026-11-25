@@ -8,14 +8,12 @@
         :root {
             --bg: #0a0e1a;
             --bg-2: #111832;
-            --card: rgba(17, 24, 50, 0.92);
-            --border: rgba(255, 255, 255, 0.10);
+            --card: #121a36;
+            --border: rgba(255, 255, 255, 0.11);
             --text: #f2f5ff;
             --muted: #8f9bbd;
-            --blue: #2f6bff;
             --cyan: #22d3ee;
             --green: #22c55e;
-            --purple: #a855f7;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,25 +23,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 56px 20px 40px;
+            padding: 52px 20px 40px;
             color: var(--text);
-            font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
             background:
-                radial-gradient(900px 500px at 15% 10%, rgba(47, 107, 255, 0.28), transparent 60%),
-                radial-gradient(800px 500px at 90% 90%, rgba(168, 85, 247, 0.22), transparent 60%),
+                radial-gradient(800px 420px at 15% 10%, rgba(47, 107, 255, 0.22), transparent 60%),
+                radial-gradient(700px 420px at 90% 90%, rgba(168, 85, 247, 0.18), transparent 60%),
                 linear-gradient(160deg, var(--bg), var(--bg-2));
         }
 
         header {
             text-align: center;
-            margin-bottom: 44px;
+            margin-bottom: 40px;
             max-width: 720px;
         }
 
         .badge {
             display: inline-block;
             padding: 6px 14px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 2px;
@@ -55,14 +53,11 @@
         }
 
         h1 {
-            font-size: clamp(30px, 5.5vw, 48px);
+            font-size: clamp(30px, 5.5vw, 46px);
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -1px;
-            background: linear-gradient(90deg, #ffffff, #9effc3 55%, var(--green));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #ffffff;
         }
 
         .subtitulo {
@@ -92,13 +87,15 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            contain: layout style;
+            content-visibility: auto;
+            contain-intrinsic-size: auto 560px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .juego-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: var(--green);
-            box-shadow: 0 14px 36px -12px var(--green);
         }
 
         .portada {
@@ -113,7 +110,7 @@
         }
 
         .juego-card h2 {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             font-size: 19px;
             font-weight: 700;
             text-align: center;
@@ -133,50 +130,38 @@
             height: 150px;
             overflow-y: auto;
             padding-right: 4px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(34, 197, 94, 0.55) rgba(255, 255, 255, 0.04);
         }
 
-        .botones-container::-webkit-scrollbar {
-            width: 6px;
-        }
+        .botones-container::-webkit-scrollbar { width: 6px; }
+        .botones-container::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.04); border-radius: 999px; }
+        .botones-container::-webkit-scrollbar-thumb { background: rgba(34, 197, 94, 0.55); border-radius: 999px; }
+        .botones-container::-webkit-scrollbar-thumb:hover { background: var(--green); }
 
-        .botones-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 999px;
-        }
-
-        .botones-container::-webkit-scrollbar-thumb {
-            background: rgba(34, 197, 94, 0.55);
-            border-radius: 999px;
-        }
-
-        .botones-container::-webkit-scrollbar-thumb:hover {
-            background: var(--green);
-        }
-
-        button {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+        .btn-dl {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background: #16a34a;
             color: #ffffff;
-            border: none;
             padding: 11px 14px;
             font-size: 14px;
-            font-family: inherit;
             font-weight: 700;
             border-radius: 10px;
-            cursor: pointer;
             width: 100%;
             flex-shrink: 0;
-            transition: filter 0.2s ease, transform 0.2s ease;
+            transition: background-color 0.2s ease;
         }
 
-        button:hover, button:focus-visible {
-            filter: brightness(1.12);
-            transform: scale(1.02);
+        .btn-dl:hover, .btn-dl:focus-visible {
+            background: #22c55e;
             outline: none;
         }
 
         .volver {
             display: inline-block;
-            margin-top: 44px;
+            margin-top: 40px;
             padding: 12px 26px;
             font-size: 15px;
             font-weight: 600;
@@ -185,13 +170,9 @@
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 10px;
-            transition: border-color 0.2s ease, background 0.2s ease;
         }
 
-        .volver:hover {
-            border-color: var(--cyan);
-            background: rgba(34, 211, 238, 0.08);
-        }
+        .volver:hover { border-color: var(--cyan); }
 
         footer {
             margin-top: 32px;
@@ -207,13 +188,11 @@
             font-weight: 600;
         }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+        footer a:hover { text-decoration: underline; }
 
         @media (prefers-reduced-motion: reduce) {
-            .juego-card, button { transition: none; }
-            .juego-card:hover, button:hover { transform: none; }
+            .juego-card, .btn-dl { transition: none; }
+            .juego-card:hover { transform: none; }
         }
     </style>
 </head>
@@ -225,161 +204,160 @@
         <p class="subtitulo">Descarga los archivos .pkg directamente a tu computadora para PS4. (Si te pide contraseña, intenta con: DLPSGAME.COM o [DLPSGAME.COM])</p>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main>
         <div class="catalogo">
             <div class="juego-card">
-                <img src="https://dlpsgame.com/wp-content/uploads/2025/08/1-8.jpg" alt="portada balatro" class="portada">
+                <img src="https://dlpsgame.com/wp-content/uploads/2025/08/1-8.jpg" alt="portada balatro" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Balatro</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://download1072.mediafire.com/bhxznyalsvngBA-V7Kd61vR52PgqcaKHzPfvz5vPYfJNLP7K58Xa6PCatv7z3dBXsk5f1eUXx_-YiVSPYp0i4C7cx8wf0b8MUupBKK9nBg4esRkbuzA2foyM2nM_GXqZt3G5N8rlXz2tARsfhKw7fo0SbYtuwZvyTUjtx64CHWir/17sioi4if9cy3bj/UP3639-CUSA47498_00-0248164936448018-A0100-V0100-%5BDLPSGAME.COM%5D.pkg')">Descargar a PC</button>
+                    <a href="https://download1072.mediafire.com/bhxznyalsvngBA-V7Kd61vR52PgqcaKHzPfvz5vPYfJNLP7K58Xa6PCatv7z3dBXsk5f1eUXx_-YiVSPYp0i4C7cx8wf0b8MUupBKK9nBg4esRkbuzA2foyM2nM_GXqZt3G5N8rlXz2tARsfhKw7fo0SbYtuwZvyTUjtx64CHWir/17sioi4if9cy3bj/UP3639-CUSA47498_00-0248164936448018-A0100-V0100-%5BDLPSGAME.COM%5D.pkg" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4l3gIijdDnG9sV-om182Tjpz4ISdu6rIrLkakQHzobA&s=10" alt="portada fifa 18" class="portada">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4l3gIijdDnG9sV-om182Tjpz4ISdu6rIrLkakQHzobA&s=10" alt="portada fifa 18" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>FIFA 18</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://download2392.mediafire.com/c8ft8zydposg5h9KfRZuGiLWW32lv4GWmBrAO3TvWMwhm4iI9jKUGY2Q5SC_gA54eraYZ-_eP868wOtKRxShLEc7hxMj55wmJfOY7Oi0rGzj-S6B-4LkFG1o0muT_3Gc7_FeTwKJumyTUO3BhYKbgc55JKy8wbIX3dJZ_Z8Gy8z9/yayx5thyicqky3u/F18_08038-%5BDLPSGAME.COM%5D.part1.rar')">Descargar a PC (Parte 1)</button>
-                    <button onclick="descargar('https://download2393.mediafire.com/idownhyq5zrgR5mrNEt8n5v2_sHtLAFvifnWnU6PNzLdjm7qQp8jHUBAK2Hep85MJQW5qIHL5ZkgqoI6KGR7TOdvd7Zx-hUElL6D4zXCQ3zHA6ASNyBIkD7c3vqkIlJ0MQHlqaGURzKMFMj4joBe263woTF9GIG9FiQcAkowCec2/9302qvg4ktc261g/F18_08038-%5BDLPSGAME.COM%5D.part2.rar')">Descargar a PC (Parte 2)</button>
-                    <button onclick="descargar('https://download2393.mediafire.com/205bek6d730goVOeN1B4kPRT6ltrc1ulhIX44ZGh_lXe80V-g_tCdGhI49oNiCKsMKMH6diW41yYslbob3ldSYVTHpYkw4lPn4kh3rOL_rXUr5bMe1mzRr0azBSYLLCCuz_PYqB_ig1n3103upsllevfBN6BlbuaAh9mkXu_JM-f/6vejoc6jobs8ecj/F18_08038-%5BDLPSGAME.COM%5D.part3.rar')">Descargar a PC (Parte 3)</button>
-                    <button onclick="descargar('https://download2391.mediafire.com/rww2oz29usrgBbP_F8BKT8Z7OgBSGxB407Njjs3Kn8xG-FVWJ6jDQvlmbtUdhFJ431x4rSszRdOvbdFze0rigv5JHeKVfuWajCEiWXUYP5sr3Q_VnpTmfhMSLj7Vu1i8Eo-c8-LADNEuLh2OcSEY7jwGVeP2OSP6aeD0lfy87c2I/urxkt6macny1ly6/F18_08038-%5BDLPSGAME.COM%5D.part4.rar')">Descargar a PC (Parte 4)</button>
+                    <a href="https://download2392.mediafire.com/c8ft8zydposg5h9KfRZuGiLWW32lv4GWmBrAO3TvWMwhm4iI9jKUGY2Q5SC_gA54eraYZ-_eP868wOtKRxShLEc7hxMj55wmJfOY7Oi0rGzj-S6B-4LkFG1o0muT_3Gc7_FeTwKJumyTUO3BhYKbgc55JKy8wbIX3dJZ_Z8Gy8z9/yayx5thyicqky3u/F18_08038-%5BDLPSGAME.COM%5D.part1.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 1)</a>
+                    <a href="https://download2393.mediafire.com/idownhyq5zrgR5mrNEt8n5v2_sHtLAFvifnWnU6PNzLdjm7qQp8jHUBAK2Hep85MJQW5qIHL5ZkgqoI6KGR7TOdvd7Zx-hUElL6D4zXCQ3zHA6ASNyBIkD7c3vqkIlJ0MQHlqaGURzKMFMj4joBe263woTF9GIG9FiQcAkowCec2/9302qvg4ktc261g/F18_08038-%5BDLPSGAME.COM%5D.part2.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 2)</a>
+                    <a href="https://download2393.mediafire.com/205bek6d730goVOeN1B4kPRT6ltrc1ulhIX44ZGh_lXe80V-g_tCdGhI49oNiCKsMKMH6diW41yYslbob3ldSYVTHpYkw4lPn4kh3rOL_rXUr5bMe1mzRr0azBSYLLCCuz_PYqB_ig1n3103upsllevfBN6BlbuaAh9mkXu_JM-f/6vejoc6jobs8ecj/F18_08038-%5BDLPSGAME.COM%5D.part3.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 3)</a>
+                    <a href="https://download2391.mediafire.com/rww2oz29usrgBbP_F8BKT8Z7OgBSGxB407Njjs3Kn8xG-FVWJ6jDQvlmbtUdhFJ431x4rSszRdOvbdFze0rigv5JHeKVfuWajCEiWXUYP5sr3Q_VnpTmfhMSLj7Vu1i8Eo-c8-LADNEuLh2OcSEY7jwGVeP2OSP6aeD0lfy87c2I/urxkt6macny1ly6/F18_08038-%5BDLPSGAME.COM%5D.part4.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 4)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKuRfAu7ULJiSr-qaEvtGvZQD_9D6QMZFI8JbdT6LLhA&s=10" alt="portada infamous second son" class="portada">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKuRfAu7ULJiSr-qaEvtGvZQD_9D6QMZFI8JbdT6LLhA&s=10" alt="portada infamous second son" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>inFAMOUS Second Son</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://download2393.mediafire.com/340a5ese4wtg_evX9agQT-qK166DHLzF6_szoNl6w2kPvtRFcQHVqBZyj3PVJKG1SmNH79cnBnW_0wez4ncCpyIiysyq2dKSxwK2G3_kRNNrlQIT63F63ZZWODyOa6YxcA2ouDKUay-ujccJoiwA9WqNUVeHtTt3P6qdhlStcPob/sjjlmy7es5f9vcv/InFAMOUS_Second_Son_PS4-PROTOCOL-%5BDLPSGAME.COM%5D.part1.rar')">Descargar a PC (Parte 1)</button>
-                    <button onclick="descargar('https://download2393.mediafire.com/nl8r2ezhllygVXX0z_jeOPPLrWmUvvFW2W2ybFgOahc7W4mALnORAKsA0Ja1NTukA4YMcIrm9mdfHiAe7OiTLF384RV0DX9JZggbWcZ4FBPlssqRcuoMWdBNGa6xaWL_A6m95tyqI8vEXnLFJeSxtUCUvFA-dk6ha--RgvcaWva3/eu5ls0nq3n9ff6y/InFAMOUS_Second_Son_PS4-PROTOCOL-%5BDLPSGAME.COM%5D.part2.rar')">Descargar a PC (Parte 2)</button>
-                    <button onclick="descargar('https://download2393.mediafire.com/2c4h01tci9pgL5foUS1eg8hVys1lAmmGfx7yDNPje31Hetz-zlcNm3jS33-jVWuwbcHTU5296GpsR2h3HiQCf2rBYsUG-fDhV2QPzRMvdweFZYeOSRWEqS2WSQJntuGoLdGjWJ3GSCVIANLI_Tlq8gKstrQWXIoSC4g5zZ7MXLSX/wll6gnlr7yxksi8/InFAMOUS_Second_Son_PS4-PROTOCOL-%5BDLPSGAME.COM%5D.part3.rar')">Descargar a PC (Parte 3)</button>
+                    <a href="https://download2393.mediafire.com/340a5ese4wtg_evX9agQT-qK166DHLzF6_szoNl6w2kPvtRFcQHVqBZyj3PVJKG1SmNH79cnBnW_0wez4ncCpyIiysyq2dKSxwK2G3_kRNNrlQIT63F63ZZWODyOa6YxcA2ouDKUay-ujccJoiwA9WqNUVeHtTt3P6qdhlStcPob/sjjlmy7es5f9vcv/InFAMOUS_Second_Son_PS4-PROTOCOL-%5BDLPSGAME.COM%5D.part1.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 1)</a>
+                    <a href="https://download2393.mediafire.com/nl8r2ezhllygVXX0z_jeOPPLrWmUvvFW2W2ybFgOahc7W4mALnORAKsA0Ja1NTukA4YMcIrm9mdfHiAe7OiTLF384RV0DX9JZggbWcZ4FBPlssqRcuoMWdBNGa6xaWL_A6m95tyqI8vEXnLFJeSxtUCUvFA-dk6ha--RgvcaWva3/eu5ls0nq3n9ff6y/InFAMOUS_Second_Son_PS4-PROTOCOL-%5BDLPSGAME.COM%5D.part2.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 2)</a>
+                    <a href="https://download2393.mediafire.com/2c4h01tci9pgL5foUS1eg8hVys1lAmmGfx7yDNPje31Hetz-zlcNm3jS33-jVWuwbcHTU5296GpsR2h3HiQCf2rBYsUG-fDhV2QPzRMvdweFZYeOSRWEqS2WSQJntuGoLdGjWJ3GSCVIANLI_Tlq8gKstrQWXIoSC4g5zZ7MXLSX/wll6gnlr7yxksi8/InFAMOUS_Second_Son_PS4-PROTOCOL-%5BDLPSGAME.COM%5D.part3.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 3)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrQgNy0v4A1S9U8Ye4AcRDktH0PkFqV8xeC20E8tJfgw&s=10" alt="portada metro exodus gold edition" class="portada">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrQgNy0v4A1S9U8Ye4AcRDktH0PkFqV8xeC20E8tJfgw&s=10" alt="portada metro exodus gold edition" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Metro Exodus Gold Edition</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://download2297.mediafire.com/6q83ha13g2ygV0vCBdw_CbKmlmfohtX8_jH9qwiiQMKmbdg7W1mdg_NqYd-4P-i5rmtW0WZfKHxAWNAAfnxvFcegyebI04qg8iCbdYVh33MtxYskkw_zx2Hd4R1wREGf1H_FPCpL_SlCmMu-WJ09hnaQsfQrJRAD2PW5FkRfHe5c/qsgjj9b0ztmxq90/hako-me.v1.00-11408.part01.rar')">Descargar a PC (Parte 1)</button>
-                    <button onclick="descargar('https://download1478.mediafire.com/k70or5tjl5wgdmSL0EjNs_ckwmOwane9WNku-Wg_7xM7v8TVEOTzYwAfhFQKBmHlhRcJPnwYncMqtn8Amc2rprjcXztrTQAwAQLPNgK1-tkWWVxPFzmSdOm0CNSuEQo_eB5M_EfHBSgaWeKOsYS4f4C56J8x48mSnRamwKjlKv9i/gq1maacshxtfh9y/hako-me.v1.00-11408.part02.rar')">Descargar a PC (Parte 2)</button>
-                    <button onclick="descargar('https://download1322.mediafire.com/2i78ptjfdvighZb1WGpGVsxVmLcrW4JQuQeNzzA3XJ0LiBYe6FKPQy5Wh8TSmXbU9fS7HFVlLn8ACj53PiAX3N6_D4tjsbs_TfxJ-YdFJ8Ck0I8jpz-72DYjs7t1dLLbIRhQ-V6WGSZjwAhLGwV4v-NrQt01qutCoX21hypQkP8q/4x2lr9c3ub06d8e/hako-me.v1.00-11408.part03.rar')">Descargar a PC (Parte 3)</button>
-                    <button onclick="descargar('https://download850.mediafire.com/uakad9rw6nugLC9i7FcyJ8GP-eYEcAxgoYQ8TXsFJX8SXV2xya67XINP9vZmn5Fg4ZCA-msGIIstiebR2PG753hyN7O_2gsd9rGiBFKsibK4ZXL8cK0BKgDO_vcvN6X_SrCE0CvePk5ikYRffUqvUPe1F9TgES1dlU1f5vFeEjFh/2n1qxhzxqq1u2ha/hako-me.v1.00-11408.part04.rar')">Descargar a PC (Parte 4)</button>
-                    <button onclick="descargar('https://download1348.mediafire.com/v5ydfkw7fcpgQuq5zbVYFbOuyOHHh-Gq9zVnmZ14MAnPESOQsjeu4xv0JzFo8sOhJav561o493vu74xWEKhLH1iLrGAdW-3BW1ftn_OjTRagqLh7km67GYllEiQUgrzsfaG-OWwGBajWNyImhf2jH5LoRIUiWir-5JxKXrbXMSo1/bb8ufm5jvwflndv/hako-me.v1.00-11408.part05.rar')">Descargar a PC (Parte 5)</button>
-                    <button onclick="descargar('https://download2302.mediafire.com/8legkzp3shmgMKCZbxpfeGfNmU32f7qliRM10mntNKlU7al_2DXfQBwpUFglcdc3bgtoFm-NEL0QSOvSxAEmO65PaHxZbSA6zrQVifDmSnWq2CqmIY_WLTDA2ckU_DdNohlDn8vksiDgWgalLCWsM0Vh1JH1F6awWo7fCsq3KdAk/yp8f0b49oq816o1/hako-me.v1.00-11408.part06.rar')">Descargar a PC (Parte 6)</button>
-                    <button onclick="descargar('https://download1347.mediafire.com/3qshv8vb55mgPkl3_ZyYLgRsA1F_8cwb-YEYWAf0dLtJI-_H-aYCBR-ey5qrfm9mziQ9V2VamIL5NLlt5NxgC9QkcEBydRyQaps2FrxmvaPlXtbEjnlmjIrz2o1QG0pFEO8C7ROXjBICtx9UBHTI-BA9FXFWrSumfo7KSAFOkr4B/oj4xwoz4cwant1y/hako-me.v1.00-11408.part07.rar')">Descargar a PC (Parte 7)</button>
-                    <button onclick="descargar('https://download1320.mediafire.com/j142deku9fpgSuUj0eplEtceDSbu_6dleyA3yJ-2MD-935S44aQL_GcixoQQXEAMjUW3VCVYSd66jdOMg9-4ZTPyqPRXgv6P5APBHUpI58hYTnMSEKJu_URUvC1Sasyc8U9rZUUg4L9G5Mebw-u0qw_avaXZsGfjYU8ckvsNw5L4/dc6s8wrjtlueazi/hako-me.v1.00-11408.part08.rar')">Descargar a PC (Parte 8)</button>
-                    <button onclick="descargar('https://download1326.mediafire.com/ya8519m0fytgiONgrKutLjiVT_ZTPFyUFBwXWXQtguRQv-jXlQo4p6BbPWM8OaatIDxGElv8TtJdprYg9gqtRWMG_7kRKtVPLedojn-o6bxj8n5JR9Tv2d4HWzDsnKdW7RIbvB7a0qqnLUAW_Wxa5AAvUBzWJp-L3QB6DiD6mswW/sxcre8by84m2tk0/hako-me.v1.00-11408.part09.rar')">Descargar a PC (Parte 9)</button>
+                    <a href="https://download2297.mediafire.com/6q83ha13g2ygV0vCBdw_CbKmlmfohtX8_jH9qwiiQMKmbdg7W1mdg_NqYd-4P-i5rmtW0WZfKHxAWNAAfnxvFcegyebI04qg8iCbdYVh33MtxYskkw_zx2Hd4R1wREGf1H_FPCpL_SlCmMu-WJ09hnaQsfQrJRAD2PW5FkRfHe5c/qsgjj9b0ztmxq90/hako-me.v1.00-11408.part01.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 1)</a>
+                    <a href="https://download1478.mediafire.com/k70or5tjl5wgdmSL0EjNs_ckwmOwane9WNku-Wg_7xM7v8TVEOTzYwAfhFQKBmHlhRcJPnwYncMqtn8Amc2rprjcXztrTQAwAQLPNgK1-tkWWVxPFzmSdOm0CNSuEQo_eB5M_EfHBSgaWeKOsYS4f4C56J8x48mSnRamwKjlKv9i/gq1maacshxtfh9y/hako-me.v1.00-11408.part02.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 2)</a>
+                    <a href="https://download1322.mediafire.com/2i78ptjfdvighZb1WGpGVsxVmLcrW4JQuQeNzzA3XJ0LiBYe6FKPQy5Wh8TSmXbU9fS7HFVlLn8ACj53PiAX3N6_D4tjsbs_TfxJ-YdFJ8Ck0I8jpz-72DYjs7t1dLLbIRhQ-V6WGSZjwAhLGwV4v-NrQt01qutCoX21hypQkP8q/4x2lr9c3ub06d8e/hako-me.v1.00-11408.part03.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 3)</a>
+                    <a href="https://download850.mediafire.com/uakad9rw6nugLC9i7FcyJ8GP-eYEcAxgoYQ8TXsFJX8SXV2xya67XINP9vZmn5Fg4ZCA-msGIIstiebR2PG753hyN7O_2gsd9rGiBFKsibK4ZXL8cK0BKgDO_vcvN6X_SrCE0CvePk5ikYRffUqvUPe1F9TgES1dlU1f5vFeEjFh/2n1qxhzxqq1u2ha/hako-me.v1.00-11408.part04.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 4)</a>
+                    <a href="https://download1348.mediafire.com/v5ydfkw7fcpgQuq5zbVYFbOuyOHHh-Gq9zVnmZ14MAnPESOQsjeu4xv0JzFo8sOhJav561o493vu74xWEKhLH1iLrGAdW-3BW1ftn_OjTRagqLh7km67GYllEiQUgrzsfaG-OWwGBajWNyImhf2jH5LoRIUiWir-5JxKXrbXMSo1/bb8ufm5jvwflndv/hako-me.v1.00-11408.part05.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 5)</a>
+                    <a href="https://download2302.mediafire.com/8legkzp3shmgMKCZbxpfeGfNmU32f7qliRM10mntNKlU7al_2DXfQBwpUFglcdc3bgtoFm-NEL0QSOvSxAEmO65PaHxZbSA6zrQVifDmSnWq2CqmIY_WLTDA2ckU_DdNohlDn8vksiDgWgalLCWsM0Vh1JH1F6awWo7fCsq3KdAk/yp8f0b49oq816o1/hako-me.v1.00-11408.part06.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 6)</a>
+                    <a href="https://download1347.mediafire.com/3qshv8vb55mgPkl3_ZyYLgRsA1F_8cwb-YEYWAf0dLtJI-_H-aYCBR-ey5qrfm9mziQ9V2VamIL5NLlt5NxgC9QkcEBydRyQaps2FrxmvaPlXtbEjnlmjIrz2o1QG0pFEO8C7ROXjBICtx9UBHTI-BA9FXFWrSumfo7KSAFOkr4B/oj4xwoz4cwant1y/hako-me.v1.00-11408.part07.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 7)</a>
+                    <a href="https://download1320.mediafire.com/j142deku9fpgSuUj0eplEtceDSbu_6dleyA3yJ-2MD-935S44aQL_GcixoQQXEAMjUW3VCVYSd66jdOMg9-4ZTPyqPRXgv6P5APBHUpI58hYTnMSEKJu_URUvC1Sasyc8U9rZUUg4L9G5Mebw-u0qw_avaXZsGfjYU8ckvsNw5L4/dc6s8wrjtlueazi/hako-me.v1.00-11408.part08.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 8)</a>
+                    <a href="https://download1326.mediafire.com/ya8519m0fytgiONgrKutLjiVT_ZTPFyUFBwXWXQtguRQv-jXlQo4p6BbPWM8OaatIDxGElv8TtJdprYg9gqtRWMG_7kRKtVPLedojn-o6bxj8n5JR9Tv2d4HWzDsnKdW7RIbvB7a0qqnLUAW_Wxa5AAvUBzWJp-L3QB6DiD6mswW/sxcre8by84m2tk0/hako-me.v1.00-11408.part09.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 9)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://1.bp.blogspot.com/-Q3UmI3HLgNc/Yu46xDwVDjI/AAAAAAAAKMw/BsBPMCkKtKYfI21Xq37D_S3nSsLjRQdfQCNcBGAsYHQ/s0/3.jpg" alt="stray" class="portada">
+                <img src="https://1.bp.blogspot.com/-Q3UmI3HLgNc/Yu46xDwVDjI/AAAAAAAAKMw/BsBPMCkKtKYfI21Xq37D_S3nSsLjRQdfQCNcBGAsYHQ/s0/3.jpg" alt="stray" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>stray</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://download2447.mediafire.com/26gmuvmsrxjgRdd1oGHveLTep-1GyP1EW-BB9XTOQMyIzZYNdixjeHWz8fOxZUwX43Xvu0xw5Hm2gCTSFYCsT1cH7244OEDj3nDvLYLSsv75Wsq3ypXO1ZqxvppmI7fy1o_Uv2y983CwGw6aNt7ccl6trI0qS1gs8t26U-Ec-BgR/zrue0lpa1jg4b99/%5BDLPSGAME.COM%5D-Stray_CUSA24899_v1.00_%5B9.00%5D_OPOISSO893.rar')">Descargar a PC</button>
-                    <button onclick="descargar('https://download2390.mediafire.com/po53il2hpriglA2zSNfLPwlbHZw3aiqV74vlCzprukWjFtotHXyg3Ri7nesa8RPVjx9xnE9SIEPYq6A_BLFj0VcnFEiJR01_psne1WBfX9DXqBfEL3TjGms629yJAUpFxmYm85eBj98jn8PxadBj4TShjs9QTcsb6wwUA29TZpsr/ocg788881w9mil2/%5BDLPSGAME.COM%5D-Stray_CUSA24899_v1.04_%5B9.00%5D_OPOISSO893.rar')">Descargar a PC (update)</button>
+                    <a href="https://download2447.mediafire.com/26gmuvmsrxjgRdd1oGHveLTep-1GyP1EW-BB9XTOQMyIzZYNdixjeHWz8fOxZUwX43Xvu0xw5Hm2gCTSFYCsT1cH7244OEDj3nDvLYLSsv75Wsq3ypXO1ZqxvppmI7fy1o_Uv2y983CwGw6aNt7ccl6trI0qS1gs8t26U-Ec-BgR/zrue0lpa1jg4b99/%5BDLPSGAME.COM%5D-Stray_CUSA24899_v1.00_%5B9.00%5D_OPOISSO893.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC</a>
+                    <a href="https://download2390.mediafire.com/po53il2hpriglA2zSNfLPwlbHZw3aiqV74vlCzprukWjFtotHXyg3Ri7nesa8RPVjx9xnE9SIEPYq6A_BLFj0VcnFEiJR01_psne1WBfX9DXqBfEL3TjGms629yJAUpFxmYm85eBj98jn8PxadBj4TShjs9QTcsb6wwUA29TZpsr/ocg788881w9mil2/%5BDLPSGAME.COM%5D-Stray_CUSA24899_v1.04_%5B9.00%5D_OPOISSO893.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (update)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://dlpsgame.com/wp-content/uploads/2025/12/5-2.jpg" alt="portada goat simulator 3" class="portada">
+                <img src="https://dlpsgame.com/wp-content/uploads/2025/12/5-2.jpg" alt="portada goat simulator 3" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Goat Simulator 3</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://download2390.mediafire.com/f88yq2k3tbzgAnTwUSA7nnRrTUYfVMiNazBCGY1b9WOdPL88dp_dYNnWS1OR0X7aO3Lr3_z7XE--WeoZ9a2hawr3E7cPjzYuhpE9kZa5-y3HMX9QNdLPgw28Qf3RYNif5NvNGdlKwvX9zzgv1kkAGnnyi3vFBa6EPbmHsdzapO_S/8mrfeyzzk99d0a8/Base_v1.00_12.00_CUSA46679-%5BDLPSGAME.COM%5D.pkg')">Descargar a PC</button>
-                    <button onclick="descargar('https://download2283.mediafire.com/5s6h4pxv6mdgxA8C0dtA9m6FiWnZjr_MKswqiS_Nbm0-0NQd3yN3nH0h7yEZGR6daZHqaBnBICnv31Mnw-gX-Y5GFyd6e0XnitLgpSOsKYb2L_DGiLUcGetOPxMUdM_K451FbOm2dZc4ADlbmP5v9DicM2JANEgYJG6h6gRcwo9m/ervlvkazpzn10z2/Update_v1.10_5.05_BACKPORT_CUSA46679-%5BDLPSGAME.COM%5D.pkg')">Descargar a PC (Update)</button>
+                    <a href="https://download2390.mediafire.com/f88yq2k3tbzgAnTwUSA7nnRrTUYfVMiNazBCGY1b9WOdPL88dp_dYNnWS1OR0X7aO3Lr3_z7XE--WeoZ9a2hawr3E7cPjzYuhpE9kZa5-y3HMX9QNdLPgw28Qf3RYNif5NvNGdlKwvX9zzgv1kkAGnnyi3vFBa6EPbmHsdzapO_S/8mrfeyzzk99d0a8/Base_v1.00_12.00_CUSA46679-%5BDLPSGAME.COM%5D.pkg" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC</a>
+                    <a href="https://download2283.mediafire.com/5s6h4pxv6mdgxA8C0dtA9m6FiWnZjr_MKswqiS_Nbm0-0NQd3yN3nH0h7yEZGR6daZHqaBnBICnv31Mnw-gX-Y5GFyd6e0XnitLgpSOsKYb2L_DGiLUcGetOPxMUdM_K451FbOm2dZc4ADlbmP5v9DicM2JANEgYJG6h6gRcwo9m/ervlvkazpzn10z2/Update_v1.10_5.05_BACKPORT_CUSA46679-%5BDLPSGAME.COM%5D.pkg" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Update)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://dlpsgame.com/wp-content/uploads/2025/08/1-1.jpg" alt="portada brotato" class="portada">
+                <img src="https://dlpsgame.com/wp-content/uploads/2025/08/1-1.jpg" alt="portada brotato" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Brotato</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://download2287.mediafire.com/qprr7g2rsnlgC8QBsvDjYbrIkkBPF5qvHdBa6ARGYIwkvNFc776_9GvUxVhiB6xc_Kjko1C9ZOkcvzF9UyKMuugx5-N10t7K9oKC4XKz-E17B13bhFlXSyANam-aL3gslKr63MNUFcSAl4-suQYqvqoiTt18Tbyn_pEBcTX9Gcly/ek8963hbsnyboq1/B_40582_v1.00_%5B11.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar')">Descargar a PC</button>
-                    <button onclick="descargar('https://download948.mediafire.com/cko4h7wyd9ygQ-DFJD_A0HGkdFuvPMxX18NarXqIT3C_z3AAYhPAJYhmJ8CLYOEuOj23XArA9JH4BaV4uRdhrSqQz3QpeG8U7Zhu50PU5B5-U20uyE8PB4BUFPKlJ6P6q6h3dNjNuV6zvkjrcxIxpP-qHtuzUBPKUHGWkN-BUxeW/42fc4s48vcyw587/B_40582_v1.02_%5B11.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar')">Descargar a PC (Update)</button>
-                    <button onclick="descargar('https://download1584.mediafire.com/ky7779ck1pjgXkoeSk8a8mH0P80UmYgG8Mwrf3M01zp0hLRFL2IF6bpLBQG4F4jfKYHLhi7WkOSZsO_DHuRpfIQ10VwrdDDbpTWT9yDcptMdyUW-Bn3wJ1wb-p314oa8uTW3qfxs86ZV9V48HscSY3OeVXj4DmTge0WD7WKLWs6e/y9swr0adc1e65un/B_40582_Abyssal.Terrors_OPOISSO893-%5BDLPSGAME.COM%5D.rar')">Descargar a PC (Abyssal Terrors DLC)</button>
+                    <a href="https://download2287.mediafire.com/qprr7g2rsnlgC8QBsvDjYbrIkkBPF5qvHdBa6ARGYIwkvNFc776_9GvUxVhiB6xc_Kjko1C9ZOkcvzF9UyKMuugx5-N10t7K9oKC4XKz-E17B13bhFlXSyANam-aL3gslKr63MNUFcSAl4-suQYqvqoiTt18Tbyn_pEBcTX9Gcly/ek8963hbsnyboq1/B_40582_v1.00_%5B11.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC</a>
+                    <a href="https://download948.mediafire.com/cko4h7wyd9ygQ-DFJD_A0HGkdFuvPMxX18NarXqIT3C_z3AAYhPAJYhmJ8CLYOEuOj23XArA9JH4BaV4uRdhrSqQz3QpeG8U7Zhu50PU5B5-U20uyE8PB4BUFPKlJ6P6q6h3dNjNuV6zvkjrcxIxpP-qHtuzUBPKUHGWkN-BUxeW/42fc4s48vcyw587/B_40582_v1.02_%5B11.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Update)</a>
+                    <a href="https://download1584.mediafire.com/ky7779ck1pjgXkoeSk8a8mH0P80UmYgG8Mwrf3M01zp0hLRFL2IF6bpLBQG4F4jfKYHLhi7WkOSZsO_DHuRpfIQ10VwrdDDbpTWT9yDcptMdyUW-Bn3wJ1wb-p314oa8uTW3qfxs86ZV9V48HscSY3OeVXj4DmTge0WD7WKLWs6e/y9swr0adc1e65un/B_40582_Abyssal.Terrors_OPOISSO893-%5BDLPSGAME.COM%5D.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Abyssal Terrors DLC)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://dlpsgame.com/wp-content/uploads/2025/09/1-4.jpg" alt="portada hollow knight silksong" class="portada">
+                <img src="https://dlpsgame.com/wp-content/uploads/2025/09/1-4.jpg" alt="portada hollow knight silksong" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Hollow Knight Silksong</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://download2437.mediafire.com/l9zdt7jfa8ygNCo5Ix4uvXc9aO7U_VuU462eq4BbyLJmpJGRIejKFSm5Dt2vOxqc_IS1bahsn7MaeS_rrHK4OvS-8OO6JylQfgCydGZzEIwbZ9FFlbmwgmdaSQh1RoCKnf8X3PXgLU7oHhdMBW5AW8sMSJSpBhvxoAQdu-hcmq6F/tu3rm6zm0c1w4z3/%5BDLPSGAME.COM%5D-CUSA39420.rar')">Descargar a PC (Juego + Update)</button>
+                    <a href="https://download2437.mediafire.com/l9zdt7jfa8ygNCo5Ix4uvXc9aO7U_VuU462eq4BbyLJmpJGRIejKFSm5Dt2vOxqc_IS1bahsn7MaeS_rrHK4OvS-8OO6JylQfgCydGZzEIwbZ9FFlbmwgmdaSQh1RoCKnf8X3PXgLU7oHhdMBW5AW8sMSJSpBhvxoAQdu-hcmq6F/tu3rm6zm0c1w4z3/%5BDLPSGAME.COM%5D-CUSA39420.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Juego + Update)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://dlpsgame.com/wp-content/uploads/2026/09/1-vfd-1.jpg" alt="portada call of duty black ops 2" class="portada">
+                <img src="https://dlpsgame.com/wp-content/uploads/2026/09/1-vfd-1.jpg" alt="portada call of duty black ops 2" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Call of Duty: Black Ops II</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://datanodes.to/0uei2einytkt/[DLPSGAME.COM]-BO2_CUSA57548_v1.11_FULLGAME_[5.05].part1.rar')">Descargar a PC (Parte 1)</button>
-                    <button onclick="descargar('https://datanodes.to/ol2pu2qeu0vr/[DLPSGAME.COM]-BO2_CUSA57548_v1.11_FULLGAME_[5.05].part2.rar')">Descargar a PC (Parte 2)</button>
-                    <button onclick="descargar('https://datanodes.to/e1dr787zs3bb/[DLPSGAME.COM]-BO2_CUSA57548_v1.11_FULLGAME_[5.05].part3.rar')">Descargar a PC (Parte 3)</button>
-                    <button onclick="descargar('https://datanodes.to/8spqr2p5i1zo/[DLPSGAME.COM]-BO2_CUSA57548_v1.11_FULLGAME_[5.05].part4.rar')">Descargar a PC (Parte 4)</button>
+                    <a href="https://datanodes.to/0uei2einytkt/[DLPSGAME.COM]-BO2_CUSA57548_v1.11_FULLGAME_[5.05].part1.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 1)</a>
+                    <a href="https://datanodes.to/ol2pu2qeu0vr/[DLPSGAME.COM]-BO2_CUSA57548_v1.11_FULLGAME_[5.05].part2.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 2)</a>
+                    <a href="https://datanodes.to/e1dr787zs3bb/[DLPSGAME.COM]-BO2_CUSA57548_v1.11_FULLGAME_[5.05].part3.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 3)</a>
+                    <a href="https://datanodes.to/8spqr2p5i1zo/[DLPSGAME.COM]-BO2_CUSA57548_v1.11_FULLGAME_[5.05].part4.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 4)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://dlpsgame.com/wp-content/uploads/2026/09/1-vdx-1.jpg" alt="portada 1-vdx-1" class="portada">
+                <img src="https://dlpsgame.com/wp-content/uploads/2026/09/1-vdx-1.jpg" alt="portada 1-vdx-1" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>FC 27</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://buzzheavier.com/1v8p1e5tzccn')">Descargar a PC (Parte 1)</button>
-                    <button onclick="descargar('https://buzzheavier.com/jt1tvpdv4cc4')">Descargar a PC (Parte 2)</button>
-                    <button onclick="descargar('https://buzzheavier.com/k1ew23nm4hob')">Descargar a PC (Parte 3)</button>
-                    <button onclick="descargar('https://buzzheavier.com/wnt3w2o4udk3')">Descargar a PC (Parte 4)</button>
-                    <button onclick="descargar('https://buzzheavier.com/n890srtwrtf8')">Descargar a PC (Parte 5)</button>
-                    <button onclick="descargar('https://buzzheavier.com/xo4dwu8qzu75')">Descargar a PC (Update)</button>
-                    <button onclick="descargar('https://buzzheavier.com/nqze7m5nfi7c')">Descargar a PC (Offline Unlocker)</button>
+                    <a href="https://buzzheavier.com/1v8p1e5tzccn" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 1)</a>
+                    <a href="https://buzzheavier.com/jt1tvpdv4cc4" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 2)</a>
+                    <a href="https://buzzheavier.com/k1ew23nm4hob" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 3)</a>
+                    <a href="https://buzzheavier.com/wnt3w2o4udk3" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 4)</a>
+                    <a href="https://buzzheavier.com/n890srtwrtf8" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 5)</a>
+                    <a href="https://buzzheavier.com/xo4dwu8qzu75" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Update)</a>
+                    <a href="https://buzzheavier.com/nqze7m5nfi7c" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Offline Unlocker)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://dlpsgame.com/wp-content/uploads/2026/09/1-fed-1.jpg" alt="portada cod bo1" class="portada">
+                <img src="https://dlpsgame.com/wp-content/uploads/2026/09/1-fed-1.jpg" alt="portada cod bo1" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Call of Duty: Black Ops</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://datanodes.to/pgha3gne7x8y/[DLPSGAME.COM]-BO1_CUSA57547_v1.09_FULLGAME_[5.05].part1.rar')">Descargar a PC (Parte 1)</button>
-                    <button onclick="descargar('https://datanodes.to/nbtn9cuk9kad/[DLPSGAME.COM]-BO1_CUSA57547_v1.09_FULLGAME_[5.05].part2.rar')">Descargar a PC (Parte 2)</button>
-                    <button onclick="descargar('https://datanodes.to/lenrmqw9ms9f/[DLPSGAME.COM]-BO1_CUSA57547_v1.09_FULLGAME_[5.05].part3.rar')">Descargar a PC (Parte 3)</button>
+                    <a href="https://datanodes.to/pgha3gne7x8y/[DLPSGAME.COM]-BO1_CUSA57547_v1.09_FULLGAME_[5.05].part1.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 1)</a>
+                    <a href="https://datanodes.to/nbtn9cuk9kad/[DLPSGAME.COM]-BO1_CUSA57547_v1.09_FULLGAME_[5.05].part2.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 2)</a>
+                    <a href="https://datanodes.to/lenrmqw9ms9f/[DLPSGAME.COM]-BO1_CUSA57547_v1.09_FULLGAME_[5.05].part3.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 3)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://1.bp.blogspot.com/-7hfPcLeQQb0/YgEYCVtE75I/AAAAAAAAIYQ/xqdyGSaMDtARl-8GpX5vWpoo1OAh7pm0gCNcBGAsYHQ/s0/16.jpg" alt="portada Doki Doki Literature Club Plus" class="portada">
+                <img src="https://1.bp.blogspot.com/-7hfPcLeQQb0/YgEYCVtE75I/AAAAAAAAIYQ/xqdyGSaMDtARl-8GpX5vWpoo1OAh7pm0gCNcBGAsYHQ/s0/16.jpg" alt="portada Doki Doki Literature Club Plus" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Doki Doki Literature Club Plus</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://vikingfile.com/d/Tk8P9XZ6BQ/D_28000_v1.00_%5B9.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar')">Descargar a PC (Juego)</button>
-                    <button onclick="descargar('https://vikingfile.com/d/YqFsVrlfml/D_28000_v1.06_%5B9.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar')">Descargar a PC (Update)</button>
+                    <a href="https://vikingfile.com/d/Tk8P9XZ6BQ/D_28000_v1.00_%5B9.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Juego)</a>
+                    <a href="https://vikingfile.com/d/YqFsVrlfml/D_28000_v1.06_%5B9.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Update)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://1.bp.blogspot.com/-SlgM5mxfv5Q/X97SNG627oI/AAAAAAAAIGs/1kICt75lIdw2J5Zu5QG6QZCNwGaCgT-9ACLcBGAsYHQ/s0/0.jpg" alt="portada doom eternal" class="portada">
+                <img src="https://1.bp.blogspot.com/-SlgM5mxfv5Q/X97SNG627oI/AAAAAAAAIGs/1kICt75lIdw2J5Zu5QG6QZCNwGaCgT-9ACLcBGAsYHQ/s0/0.jpg" alt="portada doom eternal" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Doom Eternal</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://akirabox.com/download/e1.8KeCBABwYYkpVWJBFQjRxa2EbskLMM3b8uJUCEGugN0P9ZpiJbTfjZ184a3yYYDEij-l_hpBXpT44uPdPEITRroXzf8r_xNEsrjpSNO6dMj6SD1pNlQ7NVAD4HoZFHf5bJ4g3mdBf003viddPdgHYnl04VwNLhay6AEZsiBzDMR2tssarcnXq22s7M_NSW93nfT8rM-X-SMvNo64u4F8IwBECyZ-orAtH_sQ_UmkGufQjaEOIQ90C6q7zZVqYpHRcicSJxK8keMqzTrFUnl6RDblQY6w5OmFK-mq_ci7tvcbPFzH6Z0dy58a8QVUc19jZKFYkecFNx7VpnOYHU2hpcVR8HcfdHRrOHTNhfvRHJ-dLevVXM5Tfxaj3wjQyCTkY6_3dq0c_JFq-dDozi_vGd7r38AvDk4bsxaGYbEOMWVdsKC50VVY5w8WIH3TkUPzSQoDYdmjYcWXuDn8aFjJAZj2xPY/DE_13275_v1.00_%5B6.72%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar')">Descargar a PC (Juego)</button>
-                    <button onclick="descargar('https://akirabox.com/download/e1.fCSBNmmTYtz95lcN_fq3QIbkCa0yGFOqx4v5ZXfTMg4DZBGMAhOiAYBOzGQw78UpBOk8cV9WytMfxs4CC0XsTWcCDlGRvACoOqnE-tOz0iBeGMdqxY-Ql99ANwOghfe3eQP72s85P8kxRPlHHgWO0nEqfpbNSeEat1aU1YY1u-EnMnOQFkrk8qEvQiuvNpWJkhRIE-ktX5dL9XrB1gXN5nnlILQ5pPO2sT-x-qLSOjeSsOs9c30z8i-t-1Pv--VMb066ml3s--QBNBl0YPm67l6FH4FsEmOx3aowQz0Q-8fJF-h_xGHj63MwKbWkeUThkMg67mtOSJZbtuDmOZ69er7gXWrsRf6BnFAbJQCCzkg8lZfSGucix9IaZVXT-cUPG-uQlUXvrlSRaev7T-EuEmp6trKUO8CWlj-xCE5azHL8jZdFk1ldSawdrG5kRLdEajXXTcCKdLcVwqopeAvHbTqPkY1Kug/CUSA13275_v1.27_%5B9.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.pkg')">Descargar a PC (Update)</button>
-                    <button onclick="descargar('https://akirabox.com/download/e1.P4xi-qcV8xQWtGhqc0u3YQvpiGzX9gOuPoz473jEdZJ63LwmsbDhB_4o5ed2PJT5Qpl55RCE0EICO3wPTOGxZBOpKYEr5XraWyYwf0bPc131_CK10F8fGKk1bhcAgvFIkslt0Yki9-NyUQs39z_GnfTRPVniiDwwLqLsUy9doA27s9N2WqjvzERBcXsKdmnoIk3PqdjuptocccFGaDm2TLqiHmfahVxi7MML43ESmkXerR3Y_CpQYLCEY4W8sEANyIQySVmWSSYmOIoWFFsuOcbV1j37oCVwcRmfjl25LJhbKc9FY66lDPxN3YJbQNPqKDPHvSm8EoXHrfx7bXUIFpvG0s5EqTpRYN9-OrNnfpR-K3hk11eA7PbXkKZJnLqhdcGBqZ4nD59frDDMh2kVO_BSik2Gmo_N6RJ1wnMAG-VJaYwM9b4zriJo76f2Gkq9g4828YVz-W4JwyhxCS4eLKcq/DE_13275_DLCPACK_%5B3%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar')">Descargar a PC (DLC)</button>
+                    <a href="https://akirabox.com/download/e1.8KeCBABwYYkpVWJBFQjRxa2EbskLMM3b8uJUCEGugN0P9ZpiJbTfjZ184a3yYYDEij-l_hpBXpT44uPdPEITRroXzf8r_xNEsrjpSNO6dMj6SD1pNlQ7NVAD4HoZFHf5bJ4g3mdBf003viddPdgHYnl04VwNLhay6AEZsiBzDMR2tssarcnXq22s7M_NSW93nfT8rM-X-SMvNo64u4F8IwBECyZ-orAtH_sQ_UmkGufQjaEOIQ90C6q7zZVqYpHRcicSJxK8keMqzTrFUnl6RDblQY6w5OmFK-mq_ci7tvcbPFzH6Z0dy58a8QVUc19jZKFYkecFNx7VpnOYHU2hpcVR8HcfdHRrOHTNhfvRHJ-dLevVXM5Tfxaj3wjQyCTkY6_3dq0c_JFq-dDozi_vGd7r38AvDk4bsxaGYbEOMWVdsKC50VVY5w8WIH3TkUPzSQoDYdmjYcWXuDn8aFjJAZj2xPY/DE_13275_v1.00_%5B6.72%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Juego)</a>
+                    <a href="https://akirabox.com/download/e1.fCSBNmmTYtz95lcN_fq3QIbkCa0yGFOqx4v5ZXfTMg4DZBGMAhOiAYBOzGQw78UpBOk8cV9WytMfxs4CC0XsTWcCDlGRvACoOqnE-tOz0iBeGMdqxY-Ql99ANwOghfe3eQP72s85P8kxRPlHHgWO0nEqfpbNSeEat1aU1YY1u-EnMnOQFkrk8qEvQiuvNpWJkhRIE-ktX5dL9XrB1gXN5nnlILQ5pPO2sT-x-qLSOjeSsOs9c30z8i-t-1Pv--VMb066ml3s--QBNBl0YPm67l6FH4FsEmOx3aowQz0Q-8fJF-h_xGHj63MwKbWkeUThkMg67mtOSJZbtuDmOZ69er7gXWrsRf6BnFAbJQCCzkg8lZfSGucix9IaZVXT-cUPG-uQlUXvrlSRaev7T-EuEmp6trKUO8CWlj-xCE5azHL8jZdFk1ldSawdrG5kRLdEajXXTcCKdLcVwqopeAvHbTqPkY1Kug/CUSA13275_v1.27_%5B9.00%5D_OPOISSO893-%5BDLPSGAME.COM%5D.pkg" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Update)</a>
+                    <a href="https://akirabox.com/download/e1.P4xi-qcV8xQWtGhqc0u3YQvpiGzX9gOuPoz473jEdZJ63LwmsbDhB_4o5ed2PJT5Qpl55RCE0EICO3wPTOGxZBOpKYEr5XraWyYwf0bPc131_CK10F8fGKk1bhcAgvFIkslt0Yki9-NyUQs39z_GnfTRPVniiDwwLqLsUy9doA27s9N2WqjvzERBcXsKdmnoIk3PqdjuptocccFGaDm2TLqiHmfahVxi7MML43ESmkXerR3Y_CpQYLCEY4W8sEANyIQySVmWSSYmOIoWFFsuOcbV1j37oCVwcRmfjl25LJhbKc9FY66lDPxN3YJbQNPqKDPHvSm8EoXHrfx7bXUIFpvG0s5EqTpRYN9-OrNnfpR-K3hk11eA7PbXkKZJnLqhdcGBqZ4nD59frDDMh2kVO_BSik2Gmo_N6RJ1wnMAG-VJaYwM9b4zriJo76f2Gkq9g4828YVz-W4JwyhxCS4eLKcq/DE_13275_DLCPACK_%5B3%5D_OPOISSO893-%5BDLPSGAME.COM%5D.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (DLC)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://1.bp.blogspot.com/-3cmPn_gQhbg/YbrDSE17w0I/AAAAAAAAMFM/3OL8pVFiNkcxeF25PEcTt4oqpLgBj6kgACNcBGAsYHQ/h300/7.jpg" alt="portada Ghost of Tsushima Directors Cut" class="portada">
+                <img src="https://1.bp.blogspot.com/-3cmPn_gQhbg/YbrDSE17w0I/AAAAAAAAMFM/3OL8pVFiNkcxeF25PEcTt4oqpLgBj6kgACNcBGAsYHQ/h300/7.jpg" alt="portada Ghost of Tsushima Directors Cut" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>Ghost of Tsushima Directors Cut</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://download2447.mediafire.com/ci3ckdl2g1jg_Z49Ig2cmhfweORcq55hIniw4thrNuyxLsMVTr6zpG4bvR0Km_lKAWFoXneq_0LPO3s0LYTuAZ2fsLtXmeoSC__bRXgMjfU6hRTp5rIdpbnktpHyVSJ9zApQVj4sJPArDMDz3EcIbdpTr_39U_CVFefAVTcGodD5/vja6ai4012upmyy/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part1.rar')">Descargar a PC (Parte 1)</button>
-                    <button onclick="descargar('https://download2393.mediafire.com/dohoxtj2j1zgTpcMZFVEzRTfpOQCnPU4ZcFgBClGVSjO5J-EbV87yVqcozzSPZ51MiIJg2ufXBdOw1VdqpNeXI_aTnD5g3R6g_TT_T3-5oOlbz6Zg2u06JHcVRGmtd5NGLfRyNYC_vx18n5TJDh_l_wGf4vgEsghs5hq1WOEIQLj/la7mi83ao3wdqiq/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part2.rar')">Descargar a PC (Parte 2)</button>
-                    <button onclick="descargar('https://download2445.mediafire.com/y85a3ah2g8qg0JZu7o4EL4UPRANqkNkqTv5zZ7IBRu8T6tU_Jr4eGZP3BfQaOSpn9NFzM--VF37W60XAFrC82M7_-XyQVJmYGTGkTf54eIgi-9Tq6pQVyMp_4FH7cSyw1mND0fA_ajs9Y6WtK2HbDHu6WsGV8uW2CB-H0iTb9YWW/g0ke95eubp9hzkt/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part3.rar')">Descargar a PC (Parte 3)</button>
-                    <button onclick="descargar('https://download2448.mediafire.com/97knur2iibngJHBgnjbc_cTXPuznfwlWYlF9jd9CwcmKYDnxtqwbNLiJYftMuYxWlkTdlTCUdVmQdDGKsqQQdCt90bZRjrKndKEqeVpVgd2yUco20Ga_6t88u_kvomaL6i25p2Gw0OiB64F2wmLL6zuwHrSHQmS0h3x4bgoOyjD3/jo4fswxm2bjffqd/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part4.rar')">Descargar a PC (Parte 4)</button>
-                    <button onclick="descargar('https://download2442.mediafire.com/5covqt693mdghbhJ6k8blMX6zf8Zu8SUoLkseGWklPAt0N8ib0MoTtBzKuHh2SIoWdrzWEdeHaf5S4O84wW8D_etY-ifaL2qEt3Ldi5JFWbaOW8JA5nA_P8rPfonFyCWl90zJrmRKTjuEQFUqWcJ8LQ26sTh_Q3MHODmUujNYSNB/j8rvgs817fvbgdf/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part5.rar')">Descargar a PC (Parte 5)</button>
+                    <a href="https://download2447.mediafire.com/ci3ckdl2g1jg_Z49Ig2cmhfweORcq55hIniw4thrNuyxLsMVTr6zpG4bvR0Km_lKAWFoXneq_0LPO3s0LYTuAZ2fsLtXmeoSC__bRXgMjfU6hRTp5rIdpbnktpHyVSJ9zApQVj4sJPArDMDz3EcIbdpTr_39U_CVFefAVTcGodD5/vja6ai4012upmyy/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part1.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 1)</a>
+                    <a href="https://download2393.mediafire.com/dohoxtj2j1zgTpcMZFVEzRTfpOQCnPU4ZcFgBClGVSjO5J-EbV87yVqcozzSPZ51MiIJg2ufXBdOw1VdqpNeXI_aTnD5g3R6g_TT_T3-5oOlbz6Zg2u06JHcVRGmtd5NGLfRyNYC_vx18n5TJDh_l_wGf4vgEsghs5hq1WOEIQLj/la7mi83ao3wdqiq/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part2.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 2)</a>
+                    <a href="https://download2445.mediafire.com/y85a3ah2g8qg0JZu7o4EL4UPRANqkNkqTv5zZ7IBRu8T6tU_Jr4eGZP3BfQaOSpn9NFzM--VF37W60XAFrC82M7_-XyQVJmYGTGkTf54eIgi-9Tq6pQVyMp_4FH7cSyw1mND0fA_ajs9Y6WtK2HbDHu6WsGV8uW2CB-H0iTb9YWW/g0ke95eubp9hzkt/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part3.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 3)</a>
+                    <a href="https://download2448.mediafire.com/97knur2iibngJHBgnjbc_cTXPuznfwlWYlF9jd9CwcmKYDnxtqwbNLiJYftMuYxWlkTdlTCUdVmQdDGKsqQQdCt90bZRjrKndKEqeVpVgd2yUco20Ga_6t88u_kvomaL6i25p2Gw0OiB64F2wmLL6zuwHrSHQmS0h3x4bgoOyjD3/jo4fswxm2bjffqd/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part4.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 4)</a>
+                    <a href="https://download2442.mediafire.com/5covqt693mdghbhJ6k8blMX6zf8Zu8SUoLkseGWklPAt0N8ib0MoTtBzKuHh2SIoWdrzWEdeHaf5S4O84wW8D_etY-ifaL2qEt3Ldi5JFWbaOW8JA5nA_P8rPfonFyCWl90zJrmRKTjuEQFUqWcJ8LQ26sTh_Q3MHODmUujNYSNB/j8rvgs817fvbgdf/GOT_13323_FULLGAME_v2.24_%5B9.00-11.00%5D_OPOISSO893.part5.rar" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC (Parte 5)</a>
                 </div>
             </div>
 
             <div class="juego-card">
-                <img src="https://3.bp.blogspot.com/-KE89BPVsXCI/W0oUYaHvdfI/AAAAAAAAN4c/8qMZDG10E9kLVb7Xx66z10xzqZ-hmIM7gCLcBGAs/s1600/11.jpg" alt="portada pes 2015" class="portada">
+                <img src="https://3.bp.blogspot.com/-KE89BPVsXCI/W0oUYaHvdfI/AAAAAAAAN4c/8qMZDG10E9kLVb7Xx66z10xzqZ-hmIM7gCLcBGAs/s1600/11.jpg" alt="portada pes 2015" width="250" height="300" loading="lazy" decoding="async" class="portada">
                 <h2>PES 2015</h2>
                 <div class="botones-container">
-                    <button onclick="descargar('https://vikingfile.com/d/1b1zbh94sN/PES%202015%20%2801076%29%20-%201.00%20Game%20-%20%5BDLPSGAME.COM%5D.pkg')">Descargar a PC</button>
+                    <a href="https://vikingfile.com/d/1b1zbh94sN/PES%202015%20%2801076%29%20-%201.00%20Game%20-%20%5BDLPSGAME.COM%5D.pkg" target="_blank" rel="noopener noreferrer" class="btn-dl">Descargar a PC</a>
                 </div>
             </div>
         </div>
@@ -387,16 +365,11 @@
 
     <a href="index.html" class="volver">← Volver al inicio</a>
 
-    <!-- FOOTER SOLICITADO -->
     <footer>
         Este proyecto es de código abierto, así que puedes verlo en <a href="https://github.com/marcospeder4/marcospeder4.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>.
     </footer>
 
     <script>
-        function descargar(urlPkg) {
-            window.open(urlPkg, '_blank');
-        }
-
         window.addEventListener("pageshow", function (event) {
             if (event.persisted) {
                 window.location.reload();
