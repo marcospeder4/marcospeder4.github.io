@@ -9,36 +9,21 @@
         h1 { margin-bottom: 40px; font-size: 28px; }
         .botones-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .btn { padding: 15px 30px; font-size: 18px; font-weight: bold; color: white; text-decoration: none; border-radius: 8px; transition: 0.2s; border: none; cursor: pointer; }
-        .btn-ps4 { background-color: #0070cc; }
-        .btn-ps4:hover { background-color: #005bb5; }
         .btn-pc { background-color: #28a745; }
         .btn-pc:hover { background-color: #218838; }
+        .btn-util { background-color: #8e44ad; }
+        .btn-util:hover { background-color: #732d91; }
         .nota { margin-top: 30px; font-size: 14px; color: #aaaaaa; }
     </style>
 </head>
 <body>
 
-    <h1>selecciona desde donde te estas conectando</h1>
+    <h1>store de apps y juegos para ps4</h1>
 
     <div class="botones-container">
-        <a href="store_pc.html" class="btn btn-pc">Entrar desde PC</a>
+        <a href="store_pc.html" class="btn btn-pc">Descargar juegos pkg</a>
+        <a href="utilidades.html" class="btn btn-util">Utilidades y Apps</a>
     </div>
-
-    <p class="nota" id="auto-detect-msg"></p>
-
-    <script>
-        // Pequeño script para detectar automáticamente la PS4
-        const userAgent = navigator.userAgent;
-        if (userAgent.includes("PlayStation 4")) {
-            document.getElementById("auto-detect-msg").innerText = "Detectamos que estás en una PS4. Redirigiendo...";
-            setTimeout(() => {
-                window.location.href = "store_ps4.html";
-            }, 1500);
-        } else {
-            // Opcional: Podrías hacer lo mismo para PC, pero es mejor dejar los botones por si alguien quiere copiar el link de la otra plataforma
-            document.getElementById("auto-detect-msg").innerText = "Por favor, elige la versión correspondiente a tu dispositivo.";
-        }
-    </script>
 
 </body>
 </html>
