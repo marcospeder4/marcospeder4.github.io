@@ -5,27 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utilidades y Apps</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 50px 20px; }
-        h1 { margin-bottom: 10px; font-size: 28px; }
-        .subtitulo { margin-bottom: 40px; font-size: 14px; color: #aaaaaa; }
-        .lista { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
-        .item { background-color: #1e1e1e; padding: 15px 20px; border-radius: 8px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
-        .info { flex: 1; }
-        .item h3 { margin: 0 0 5px 0; font-size: 18px; }
-        .item p { margin: 0; font-size: 14px; color: #aaaaaa; }
-        .btn-descarga { background-color: #04c966; color: #ffffff; text-decoration: none; padding: 10px 18px; border-radius: 6px; font-size: 14px; font-weight: bold; white-space: nowrap; transition: 0.2s; }
-        .btn-descarga:hover { background-color: #04c966; }
-        .volver { display: inline-block; margin-top: 40px; padding: 12px 25px; font-weight: bold; color: white; text-decoration: none; border-radius: 8px; background-color: #444; transition: 0.2s; }
-        .volver:hover { background-color: #333; }
+        :root {
+            --bg: #0a0e1a;
+            --bg-2: #111832;
+            --card: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.10);
+            --text: #f2f5ff;
+            --muted: #8f9bbd;
+            --cyan: #22d3ee;
+            --purple: #a855f7;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 56px 20px 40px;
+            color: var(--text);
+            font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+            background:
+                radial-gradient(900px 500px at 15% 10%, rgba(47, 107, 255, 0.28), transparent 60%),
+                radial-gradient(800px 500px at 90% 90%, rgba(168, 85, 247, 0.22), transparent 60%),
+                linear-gradient(160deg, var(--bg), var(--bg-2));
+            background-attachment: fixed;
+        }
+
+        header { text-align: center; margin-bottom: 44px; }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            margin-bottom: 18px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--purple);
+            background: rgba(168, 85, 247, 0.10);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 999px;
+        }
+
+        h1 {
+            font-size: clamp(30px, 5.5vw, 48px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #ffffff, #c9a6ff 55%, var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitulo { margin-top: 14px; font-size: 16px; color: var(--muted); }
+
+        .lista {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 620px;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 20px 22px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .item:hover {
+            transform: translateY(-3px);
+            border-color: var(--purple);
+            box-shadow: 0 12px 32px -12px var(--purple);
+        }
+
+        .icono {
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            font-size: 26px;
+            background: rgba(168, 85, 247, 0.16);
+            border: 1px solid rgba(168, 85, 247, 0.45);
+            border-radius: 14px;
+        }
+
+        .info { flex: 1; min-width: 0; }
+        .item h3 { margin-bottom: 4px; font-size: 18px; font-weight: 700; }
+        .item p { font-size: 14px; line-height: 1.45; color: var(--muted); }
+
+        .btn-descarga {
+            flex-shrink: 0;
+            padding: 11px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            white-space: nowrap;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            border-radius: 10px;
+            transition: filter 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-descarga:hover, .btn-descarga:focus-visible {
+            filter: brightness(1.15);
+            transform: scale(1.04);
+            outline: none;
+        }
+
+        .volver {
+            display: inline-block;
+            margin-top: 44px;
+            padding: 12px 26px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .volver:hover { border-color: var(--cyan); background: rgba(34, 211, 238, 0.08); }
+
+        @media (max-width: 520px) {
+            .item { flex-wrap: wrap; }
+            .info { flex-basis: calc(100% - 70px); }
+            .btn-descarga { width: 100%; text-align: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .item, .btn-descarga { transition: none; }
+            .item:hover, .btn-descarga:hover { transform: none; }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Utilidades y Apps</h1>
-    <p class="subtitulo">Herramientas y aplicaciones disponibles</p>
+    <header>
+        <span class="badge">PlayStation 4</span>
+        <h1>Utilidades y Apps</h1>
+        <p class="subtitulo">Herramientas y aplicaciones disponibles</p>
+    </header>
 
-    <div class="lista">
+    <main class="lista">
         <div class="item">
+            <div class="icono">☁️</div>
             <div class="info">
                 <h3>PSBox Cloud Gaming</h3>
                 <p>Juega juegos online desde la nube</p>
@@ -34,15 +171,16 @@
         </div>
 
         <div class="item">
+            <div class="icono">🖥️</div>
             <div class="info">
                 <h3>GNMScale</h3>
-                <p>Aplicacion / utilidad para reescalado y generacion de fotogramas en ps4.</p>
+                <p>Aplicación / utilidad para reescalado y generación de fotogramas en PS4.</p>
             </div>
             <a href="https://download2340.mediafire.com/sjjnrox404sgm4HwvJ5iVZ-2i-5maMOf6S81w2LIHNsOkEb6hlFsqKaw2bHWQyK_w7iqRleg4WBNxmMt1EybYuY1YXQkSI6bIaN6-OKxjACXODJQeM47LdpjGEg8dyS_5FOgEXW4WkJs3dqdQKU8C4qibqRuHKl_hxqdtT_bRipV/gh8kkwiy0kcishi/42309701c218bf783aca9a5e6f12f172_1794781007835-IV0000-GNMS00001_00-GNMSCALE00000000-nofg.pkg" target="_blank" rel="noopener noreferrer" class="btn-descarga">Descargar</a>
         </div>
-    </div>
+    </main>
 
-    <a href="index.html" class="volver">Volver al inicio</a>
+    <a href="index.html" class="volver">← Volver al inicio</a>
 
 </body>
 </html>
