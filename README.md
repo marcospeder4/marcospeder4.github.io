@@ -16,7 +16,7 @@
 ## ✨ Características
 
 - 🎯 **Catálogo organizado:** Diseño en cuadrícula (*CSS Grid*) con portadas e información clara de cada título.
-- 📦 **Soporte multipartes:** Soporte para descargas divididas (Partes 1, 2, 3...), Updates y DLCs independientes.
+- 📦 **Soporte multipartes:** Soporte para descargas divididas (Partes 1, 2, 3...), Updates y DLCs y apps/utilidades independientes.
 - ⚡ **Rápido y liviano:** Construido con código nativo (HTML5 y CSS3), sin marcos pesados.
 ---
 
