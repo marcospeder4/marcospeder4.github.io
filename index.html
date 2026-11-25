@@ -3,27 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda ps4 pkg</title>
+    <title>Tienda PS4 PKG</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 50px 20px; }
-        h1 { margin-bottom: 40px; font-size: 28px; }
-        .botones-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .btn { padding: 15px 30px; font-size: 18px; font-weight: bold; color: white; text-decoration: none; border-radius: 8px; transition: 0.2s; border: none; cursor: pointer; }
-        .btn-pc { background-color: #28a745; }
-        .btn-pc:hover { background-color: #218838; }
-        .btn-util { background-color: #8e44ad; }
-        .btn-util:hover { background-color: #732d91; }
-        .nota { margin-top: 30px; font-size: 14px; color: #aaaaaa; }
+        :root {
+            --bg: #0a0e1a;
+            --bg-2: #111832;
+            --card: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.10);
+            --text: #f2f5ff;
+            --muted: #8f9bbd;
+            --blue: #2f6bff;
+            --cyan: #22d3ee;
+            --green: #22c55e;
+            --purple: #a855f7;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 20px;
+            color: var(--text);
+            font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+            background:
+                radial-gradient(900px 500px at 15% 10%, rgba(47, 107, 255, 0.28), transparent 60%),
+                radial-gradient(800px 500px at 90% 90%, rgba(168, 85, 247, 0.22), transparent 60%),
+                linear-gradient(160deg, var(--bg), var(--bg-2));
+            background-attachment: fixed;
+        }
+
+        header { text-align: center; margin-bottom: 56px; }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(34, 211, 238, 0.08);
+            border: 1px solid rgba(34, 211, 238, 0.35);
+            border-radius: 999px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #ffffff, #9db8ff 50%, var(--cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitulo {
+            margin-top: 16px;
+            font-size: clamp(15px, 2.2vw, 18px);
+            color: var(--muted);
+        }
+
+        .botones-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .card {
+            --accent: var(--blue);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 36px 28px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, var(--accent), transparent 70%);
+            opacity: 0.12;
+            transition: opacity 0.25s ease;
+        }
+
+        .card:hover, .card:focus-visible {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 16px 40px -12px var(--accent);
+            outline: none;
+        }
+
+        .card:hover::before, .card:focus-visible::before { opacity: 0.28; }
+
+        .card-juegos { --accent: var(--green); }
+        .card-util   { --accent: var(--purple); }
+
+        .icono {
+            position: relative;
+            display: grid;
+            place-items: center;
+            width: 72px;
+            height: 72px;
+            font-size: 34px;
+            background: color-mix(in srgb, var(--accent) 18%, transparent);
+            border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+            border-radius: 18px;
+        }
+
+        .card h2 { position: relative; font-size: 22px; font-weight: 700; }
+
+        .card p { position: relative; font-size: 14px; line-height: 1.5; color: var(--muted); }
+
+        .accion {
+            position: relative;
+            margin-top: 6px;
+            padding: 11px 26px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--accent);
+            border-radius: 10px;
+            transition: filter 0.2s ease, gap 0.2s ease;
+        }
+
+        .card:hover .accion { filter: brightness(1.12); }
+
+        footer {
+            margin-top: 56px;
+            font-size: 13px;
+            color: var(--muted);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 480px) {
+            header { margin-bottom: 36px; }
+            .card { padding: 28px 22px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .card, .card::before { transition: none; }
+            .card:hover { transform: none; }
+        }
     </style>
 </head>
 <body>
 
-    <h1>store de apps y juegos para ps4</h1>
+    <header>
+        <span class="badge">PlayStation 4</span>
+        <h1>Store de apps y juegos para PS4</h1>
+        <p class="subtitulo">Elegí una categoría para empezar</p>
+    </header>
 
-    <div class="botones-container">
-        <a href="store_pc.html" class="btn btn-pc">Descargar juegos pkg</a>
-        <a href="utilidades.html" class="btn btn-util">Utilidades y Apps</a>
-    </div>
+    <main class="botones-container">
+        <a href="store_pc.html" class="card card-juegos">
+            <div class="icono">🎮</div>
+            <h2>Juegos PKG</h2>
+            <p>Explorá y descargá juegos en formato PKG.</p>
+            <span class="accion">Descargar juegos →</span>
+        </a>
+
+        <a href="utilidades.html" class="card card-util">
+            <div class="icono">🧰</div>
+            <h2>Utilidades y Apps</h2>
+            <p>Herramientas y aplicaciones útiles para tu consola.</p>
+            <span class="accion">Ver utilidades →</span>
+        </a>
+    </main>
+
+    <footer>Tienda PS4 PKG</footer>
 
 </body>
 </html>
