@@ -32,6 +32,41 @@
                 linear-gradient(160deg, var(--bg), var(--bg-2));
         }
 
+        /* Flecha rápida a la vista para volver al inicio */
+        .flecha-inicio {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            z-index: 30;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 14px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            background: rgba(18, 26, 54, 0.94);
+            border: 1px solid rgba(34, 211, 238, 0.45);
+            border-radius: 999px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .flecha-inicio:hover,
+        .flecha-inicio:focus-visible {
+            transform: translateY(-2px);
+            border-color: var(--cyan);
+            background: rgba(24, 36, 74, 1);
+            outline: none;
+        }
+
+        .flecha-icono {
+            font-size: 16px;
+            line-height: 1;
+            color: var(--cyan);
+        }
+
         header {
             text-align: center;
             margin-bottom: 40px;
@@ -190,13 +225,23 @@
 
         footer a:hover { text-decoration: underline; }
 
+        @media (max-width: 480px) {
+            body { padding-top: 68px; }
+            .flecha-inicio { top: 12px; left: 12px; padding: 8px 12px; font-size: 13px; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            .juego-card, .btn-dl { transition: none; }
-            .juego-card:hover { transform: none; }
+            .flecha-inicio, .juego-card, .btn-dl { transition: none; }
+            .flecha-inicio:hover, .juego-card:hover { transform: none; }
         }
     </style>
 </head>
 <body>
+
+    <a href="index.html" class="flecha-inicio" aria-label="Volver al inicio" title="Volver al inicio">
+        <span class="flecha-icono" aria-hidden="true">←</span>
+        <span>Inicio</span>
+    </a>
 
     <header>
         <span class="badge">PlayStation 4</span>
@@ -363,7 +408,6 @@
         </div>
     </main>
 
-    <a href="index.html" class="volver">← Volver al inicio</a>
 
     <footer>
         Este proyecto es de código abierto, así que puedes verlo en <a href="https://github.com/marcospeder4/marcospeder4.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>.
