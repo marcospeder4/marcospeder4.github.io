@@ -35,6 +35,225 @@
                 linear-gradient(160deg, var(--bg), var(--bg-2));
         }
 
+        /* Botón de ayuda arriba a la derecha */
+        .ayuda-btn {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 30;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            background: rgba(18, 26, 54, 0.95);
+            border: 1px solid rgba(34, 211, 238, 0.45);
+            border-radius: 999px;
+            cursor: pointer;
+            transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+        }
+
+        .ayuda-btn:hover,
+        .ayuda-btn:focus-visible {
+            transform: translateY(-2px);
+            border-color: var(--cyan);
+            background: rgba(24, 36, 74, 1);
+            outline: none;
+        }
+
+        .ayuda-icono {
+            display: grid;
+            place-items: center;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #071018;
+            background: var(--cyan);
+            border-radius: 50%;
+        }
+
+        /* Modal de ayuda */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 60;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(5, 8, 18, 0.82);
+        }
+
+        .modal-backdrop.abierto {
+            display: flex;
+        }
+
+        .modal-dialog {
+            width: 100%;
+            max-width: 680px;
+            max-height: 88vh;
+            overflow-y: auto;
+            padding: 26px;
+            color: var(--text);
+            background: #101730;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 20px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .modal-header h2 {
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .modal-header p {
+            margin-top: 4px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .cerrar-btn {
+            display: grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            font-size: 18px;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .cerrar-btn:hover,
+        .cerrar-btn:focus-visible {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+            outline: none;
+        }
+
+        .guia-bloque {
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .guia-bloque h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--cyan);
+        }
+
+        .guia-bloque ol {
+            padding-left: 18px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #dce3f8;
+        }
+
+        .guia-bloque li + li {
+            margin-top: 7px;
+        }
+
+        .ruta-gh {
+            display: inline-block;
+            padding: 1px 7px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #fff;
+            background: rgba(47, 107, 255, 0.25);
+            border: 1px solid rgba(47, 107, 255, 0.5);
+            border-radius: 6px;
+        }
+
+        .codigo-inline {
+            padding: 1px 6px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 12.5px;
+            color: var(--cyan);
+            background: rgba(34, 211, 238, 0.1);
+            border-radius: 5px;
+        }
+
+        .tip-nota {
+            margin-top: 10px;
+            padding: 9px 12px;
+            font-size: 12.5px;
+            line-height: 1.45;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--cyan);
+            border-radius: 6px;
+        }
+
+        .promo-box {
+            padding: 16px 18px;
+            background: linear-gradient(135deg, rgba(47, 107, 255, 0.18), rgba(34, 211, 238, 0.1));
+            border: 1px solid rgba(34, 211, 238, 0.38);
+            border-radius: 14px;
+        }
+
+        .promo-tag {
+            display: inline-block;
+            padding: 3px 9px;
+            margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(34, 211, 238, 0.14);
+            border-radius: 999px;
+        }
+
+        .promo-box h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .promo-box p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .promo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 16px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #071018;
+            text-decoration: none;
+            background: var(--cyan);
+            border-radius: 10px;
+        }
+
+        .promo-link:hover,
+        .promo-link:focus-visible {
+            filter: brightness(1.06);
+            outline: none;
+        }
+
         header { text-align: center; margin-bottom: 52px; }
 
         .badge {
@@ -86,7 +305,6 @@
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 20px;
-            contain: layout style;
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
@@ -132,17 +350,25 @@
         }
 
         @media (max-width: 480px) {
+            body { padding-top: 68px; }
+            .ayuda-btn { top: 12px; right: 12px; padding: 8px 13px; font-size: 13px; }
+            .modal-dialog { padding: 20px; }
             header { margin-bottom: 36px; }
             .card { padding: 28px 22px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .card { transition: none; }
-            .card:hover { transform: none; }
+            .ayuda-btn, .card { transition: none; }
+            .ayuda-btn:hover, .card:hover { transform: none; }
         }
     </style>
 </head>
 <body>
+
+    <button type="button" class="ayuda-btn" id="abrirAyuda" aria-haspopup="dialog" aria-controls="modalAyuda">
+        <span class="ayuda-icono" aria-hidden="true">?</span>
+        <span>Ayuda PKG</span>
+    </button>
 
     <header>
         <span class="badge">PlayStation 4</span>
@@ -168,7 +394,87 @@
 
     <footer>Tienda PS4 PKG</footer>
 
+    <div class="modal-backdrop" id="modalAyuda" role="dialog" aria-modal="true" aria-labelledby="tituloAyuda">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div>
+                    <h2 id="tituloAyuda">Cómo descargar e instalar PKGs en PS4</h2>
+                    <p>Pasos exactos en GoldHEN por FTP o pendrive USB</p>
+                </div>
+                <button type="button" class="cerrar-btn" id="cerrarAyuda" aria-label="Cerrar ayuda">✕</button>
+            </div>
+
+            <section class="guia-bloque">
+                <h3>1. Método por FTP (sin pendrive, directo al disco de la PS4)</h3>
+                <ol>
+                    <li>Descargá el archivo <span class="codigo-inline">.pkg</span> en tu PC o celular y conectalo a la misma red Wi-Fi/LAN que la PS4.</li>
+                    <li>En el menú principal de la PS4 (arriba a la izquierda), entrá a <span class="ruta-gh">★ GoldHEN → Server Settings</span> y activá la casilla <strong>Enable FTP Server</strong> (te mostrará la IP y el puerto <span class="codigo-inline">2121</span>).</li>
+                    <li>Abrí un cliente FTP (como <strong>FileZilla</strong> o <strong>WinSCP</strong> en PC, o <strong>Solid Explorer</strong> en Android), conectate con la <strong>IP de tu PS4</strong> y puerto <span class="codigo-inline">2121</span> (usuario y contraseña vacíos o <span class="codigo-inline">anonymous</span>).</li>
+                    <li>Entrá a la carpeta <span class="codigo-inline">/data/pkg/</span> (si no existe la subcarpeta <span class="codigo-inline">pkg</span> dentro de <span class="codigo-inline">/data/</span>, creala manualmente) y arrastrá ahí tus archivos <span class="codigo-inline">.pkg</span>.</li>
+                    <li>Volvé a la PS4, entrá a <span class="ruta-gh">★ GoldHEN → Debug Settings → Package Installer</span>, cambiá <strong>Package Source</strong> a <span class="codigo-inline">HDD [hdd:/data/pkg/]</span> y seleccioná el PKG para instalarlo.</li>
+                </ol>
+                <div class="tip-nota">
+                    <strong>Tip:</strong> Evitá que la PS4 entre en modo reposo durante la transferencia porque se corta el servidor FTP. Después de instalar, podés borrar el <span class="codigo-inline">.pkg</span> de <span class="codigo-inline">/data/pkg/</span> para liberar espacio.
+                </div>
+            </section>
+
+            <section class="guia-bloque">
+                <h3>2. Método por Pendrive o Disco Externo USB</h3>
+                <ol>
+                    <li>Conectá el pendrive a tu PC y formatealo en <strong>exFAT</strong> (obligatorio si el juego pesa más de 4 GB; <strong>FAT32</strong> solo sirve para archivos menores a 4 GB).</li>
+                    <li>Copiá el archivo <span class="codigo-inline">.pkg</span> directamente en la <strong>raíz</strong> del pendrive (suelto, sin meterlo adentro de subcarpetas).</li>
+                    <li>Conectá el pendrive a cualquiera de los puertos USB delanteros de la PS4.</li>
+                    <li>En la consola, andá a <span class="ruta-gh">★ GoldHEN → Debug Settings → Package Installer</span> y verificá que <strong>Package Source</strong> esté en <span class="codigo-inline">USB [usb:/]</span>.</li>
+                    <li>Elegí el archivo <span class="codigo-inline">.pkg</span> de la lista (o tocá <strong>Install All</strong> si querés instalar varios juntos) y esperá a que termine.</li>
+                </ol>
+            </section>
+
+            <section class="promo-box">
+                <span class="promo-tag">Herramienta recomendada</span>
+                <h3>ps4-pkg-sender</h3>
+                <p>
+                    ¿Querés enviar e instalar tus PKGs por red sin tener que copiar archivos manualmente por FTP ni usar pendrive? Probá
+                    <strong>ps4-pkg-sender</strong> para agilizar todo el proceso desde tu PC.
+                </p>
+                <a class="promo-link" href="https://github.com/marcospeder4/ps4-pkg-sender" target="_blank" rel="noopener noreferrer">
+                    Ver ps4-pkg-sender en GitHub →
+                </a>
+            </section>
+        </div>
+    </div>
+
     <script>
+        (function () {
+            const btnAbrir = document.getElementById("abrirAyuda");
+            const btnCerrar = document.getElementById("cerrarAyuda");
+            const modal = document.getElementById("modalAyuda");
+
+            function abrirModal() {
+                modal.classList.add("abierto");
+                btnCerrar.focus();
+            }
+
+            function cerrarModal() {
+                modal.classList.remove("abierto");
+                btnAbrir.focus();
+            }
+
+            btnAbrir.addEventListener("click", abrirModal);
+            btnCerrar.addEventListener("click", cerrarModal);
+
+            modal.addEventListener("click", function (e) {
+                if (e.target === modal) {
+                    cerrarModal();
+                }
+            });
+
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape" && modal.classList.contains("abierto")) {
+                    cerrarModal();
+                }
+            });
+        })();
+
         window.addEventListener("pageshow", function (event) {
             if (event.persisted) {
                 window.location.reload();
